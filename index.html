@@ -127,16 +127,16 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Category (Shopee Official)</label>
                             <select id="newCategory" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
-                                <option value="Home & Living">Home & Living</option>
-                                <option value="Mobile & Gadgets">Mobile & Gadgets</option>
-                                <option value="Home Appliances">Home Appliances</option>
-                                <option value="Women's Apparel">Women's Apparel</option>
-                                <option value="Men's Apparel">Men's Apparel</option>
-                                <option value="Health & Personal Care">Health & Personal Care</option>
-                                <option value="Beauty">Beauty</option>
-                                <option value="Babies & Kids">Babies & Kids</option>
-                                <option value="Sports & Outdoors">Sports & Outdoors</option>
-                                <option value="Groceries">Groceries</option>
+                                <option value="Home & Living">🏠 Home & Living</option>
+                                <option value="Mobile & Gadgets">📱 Mobile & Gadgets</option>
+                                <option value="Home Appliances">🔌 Home Appliances</option>
+                                <option value="Women's Apparel">👗 Women's Apparel</option>
+                                <option value="Men's Apparel">👔 Men's Apparel</option>
+                                <option value="Health & Personal Care">💊 Health & Personal Care</option>
+                                <option value="Beauty">✨ Beauty</option>
+                                <option value="Babies & Kids">👶 Babies & Kids</option>
+                                <option value="Sports & Outdoors">⚽ Sports & Outdoors</option>
+                                <option value="Groceries">🛒 Groceries</option>
                             </select>
                         </div>
                         <div>
@@ -430,19 +430,19 @@
                         </div>
                     </div>
 
-                    <!-- Filter Pills (Official Shopee Categories) -->
+                    <!-- Filter Pills with Icons -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categoryPills">
-                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">All Products</button>
-                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Home & Living</button>
-                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Mobile & Gadgets</button>
-                        <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Home Appliances</button>
-                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Women's Apparel</button>
-                        <button onclick="filterCategory('Men\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Men\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Men's Apparel</button>
-                        <button onclick="filterCategory('Health & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Health & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Health & Personal Care</button>
-                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Beauty</button>
-                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Babies & Kids</button>
-                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Sports & Outdoors</button>
-                        <button onclick="filterCategory('Groceries')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Groceries'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Groceries</button>
+                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all"></i> All Products</button>
+                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house"></i> Home & Living</button>
+                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-mobile-screen-button"></i> Mobile & Gadgets</button>
+                        <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-plug"></i> Home Appliances</button>
+                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-dress"></i> Women's Apparel</button>
+                        <button onclick="filterCategory('Men\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Men\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-shirt"></i> Men's Apparel</button>
+                        <button onclick="filterCategory('Health & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Health & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-pills"></i> Health & Personal Care</button>
+                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles"></i> Beauty</button>
+                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-baby"></i> Babies & Kids</button>
+                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-futbol"></i> Sports & Outdoors</button>
+                        <button onclick="filterCategory('Groceries')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Groceries'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-basket-shopping"></i> Groceries</button>
                     </div>
 
                     <!-- Product Grid -->
@@ -501,7 +501,7 @@
                     <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 overflow-hidden flex flex-col group transition duration-300">
                         <!-- Image Container with Slider -->
                         <div class="relative overflow-hidden aspect-square bg-slate-100">
-                            <span class="absolute top-3 left-3 z-10 bg-shopee text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow">
+                            <span class="absolute top-3 left-3 z-10 bg-shopee text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">
                                 ${p.category}
                             </span>
                             ${discount > 0 ? `<span class="absolute top-3 right-3 z-10 bg-amber-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow">-${discount}%</span>` : ''}
@@ -796,7 +796,7 @@
             document.getElementById('addProductForm').reset();
             document.getElementById('newRating').value = "4.9";
             document.getElementById('newSoldCount').value = "100+";
-            showToast("Product added with official Shopee category!");
+            showToast("Product added with official Shopee category & icon!");
         }
 
         function deleteProduct(index) {
