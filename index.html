@@ -105,7 +105,7 @@
                     </div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-base">Product & Full Website Code Export</h3>
-                        <p class="text-[11px] text-slate-500">Add products with specs, descriptions, and copy the entire updated website code</p>
+                        <p class="text-[11px] text-slate-500">Add products with official Shopee categories, specs, and export code</p>
                     </div>
                 </div>
                 <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition">
@@ -125,13 +125,18 @@
                             <input type="text" id="newTitle" required placeholder="e.g. Minimalist Coffee Mug" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Category</label>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Category (Shopee Official)</label>
                             <select id="newCategory" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
-                                <option value="Home Decor">Home Decor</option>
-                                <option value="Tech & Gadgets">Tech & Gadgets</option>
-                                <option value="Kitchen Essentials">Kitchen Essentials</option>
-                                <option value="Fashion">Fashion</option>
-                                <option value="Beauty & Skincare">Beauty & Skincare</option>
+                                <option value="Home & Living">Home & Living</option>
+                                <option value="Mobile & Gadgets">Mobile & Gadgets</option>
+                                <option value="Home Appliances">Home Appliances</option>
+                                <option value="Women's Apparel">Women's Apparel</option>
+                                <option value="Men's Apparel">Men's Apparel</option>
+                                <option value="Health & Personal Care">Health & Personal Care</option>
+                                <option value="Beauty">Beauty</option>
+                                <option value="Babies & Kids">Babies & Kids</option>
+                                <option value="Sports & Outdoors">Sports & Outdoors</option>
+                                <option value="Groceries">Groceries</option>
                             </select>
                         </div>
                         <div>
@@ -162,14 +167,12 @@
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Shopee Affiliate Link</label>
                             <input type="url" id="newAffLink" required placeholder="https://shopee.ph/your-link" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
-                        
-                        <!-- NEW FIELDS -->
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Product Descriptions</label>
                             <textarea id="newDescription" rows="3" placeholder="Enter detailed product overview and highlights..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
                         </div>
                         <div class="sm:col-span-2">
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Product Specifications <span class="text-slate-400 font-normal">(e.g. Material: Ceramic, Capacity: 500ml, Origin: Korea)</span></label>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Product Specifications</label>
                             <textarea id="newSpecs" rows="2" placeholder="Material: Premium Wood | Power: USB Rechargeable | Warranty: 7 Days" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
                         </div>
 
@@ -235,7 +238,7 @@
             {
                 id: "nordic-minimalist-bedside-table-lamp",
                 title: "Nordic Minimalist Bedside Table Lamp with Wooden Stand",
-                category: "Home Decor",
+                category: "Home & Living",
                 price: 349,
                 originalPrice: 899,
                 images: [
@@ -253,7 +256,7 @@
             {
                 id: "aesthetic-ergonomic-aluminum-laptop-stand",
                 title: "Aesthetic Ergonomic Aluminum Laptop Stand Foldable",
-                category: "Tech & Gadgets",
+                category: "Mobile & Gadgets",
                 price: 199,
                 originalPrice: 599,
                 images: [
@@ -270,7 +273,7 @@
             {
                 id: "insulated-stainless-steel-tumbler",
                 title: "Insulated Stainless Steel Tumbler 600ml with Straw",
-                category: "Kitchen Essentials",
+                category: "Home & Living",
                 price: 289,
                 originalPrice: 650,
                 images: [
@@ -427,14 +430,19 @@
                         </div>
                     </div>
 
-                    <!-- Filter Pills -->
+                    <!-- Filter Pills (Official Shopee Categories) -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categoryPills">
                         <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">All Products</button>
-                        <button onclick="filterCategory('Home Decor')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Home Decor'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Home Decor</button>
-                        <button onclick="filterCategory('Tech & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Tech & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Tech & Gadgets</button>
-                        <button onclick="filterCategory('Kitchen Essentials')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Kitchen Essentials'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Kitchen Essentials</button>
-                        <button onclick="filterCategory('Fashion')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Fashion'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Fashion & Style</button>
-                        <button onclick="filterCategory('Beauty & Skincare')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Beauty & Skincare'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Beauty & Skincare</button>
+                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Home & Living</button>
+                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Mobile & Gadgets</button>
+                        <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Home Appliances</button>
+                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Women's Apparel</button>
+                        <button onclick="filterCategory('Men\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Men\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Men's Apparel</button>
+                        <button onclick="filterCategory('Health & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Health & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Health & Personal Care</button>
+                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Beauty</button>
+                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Babies & Kids</button>
+                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Sports & Outdoors</button>
+                        <button onclick="filterCategory('Groceries')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap ${currentCategory==='Groceries'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition">Groceries</button>
                     </div>
 
                     <!-- Product Grid -->
@@ -788,7 +796,7 @@
             document.getElementById('addProductForm').reset();
             document.getElementById('newRating').value = "4.9";
             document.getElementById('newSoldCount').value = "100+";
-            showToast("Product added with specs & descriptions!");
+            showToast("Product added with official Shopee category!");
         }
 
         function deleteProduct(index) {
