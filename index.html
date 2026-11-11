@@ -105,7 +105,7 @@
                     </div>
                     <div>
                         <h3 class="font-bold text-slate-900 text-base">Product & Full Website Code Export</h3>
-                        <p class="text-[11px] text-slate-500">Add products with SEO sub-pages and copy the entire updated website code</p>
+                        <p class="text-[11px] text-slate-500">Add products with specs, descriptions, and copy the entire updated website code</p>
                     </div>
                 </div>
                 <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition">
@@ -162,6 +162,17 @@
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Shopee Affiliate Link</label>
                             <input type="url" id="newAffLink" required placeholder="https://shopee.ph/your-link" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
+                        
+                        <!-- NEW FIELDS -->
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Product Descriptions</label>
+                            <textarea id="newDescription" rows="3" placeholder="Enter detailed product overview and highlights..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Product Specifications <span class="text-slate-400 font-normal">(e.g. Material: Ceramic, Capacity: 500ml, Origin: Korea)</span></label>
+                            <textarea id="newSpecs" rows="2" placeholder="Material: Premium Wood | Power: USB Rechargeable | Warranty: 7 Days" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
+                        </div>
+
                         <div class="sm:col-span-2 flex justify-end pt-2">
                             <button type="submit" class="bg-shopee hover:bg-shopee-dark text-white font-semibold px-5 py-2 rounded-lg text-xs shadow transition">
                                 <i class="fa-solid fa-plus mr-1"></i> Add to Product List
@@ -235,7 +246,9 @@
                 altText: "Nordic Minimalist Bedside Table Lamp with Wooden Stand",
                 affLink: "https://shopee.ph",
                 rating: 4.8,
-                soldCount: "1.2k"
+                soldCount: "1.2k",
+                description: "Elevate your space with this Nordic Minimalist Bedside Table Lamp. Features a warm ambient glow, natural wooden stand, and sleek contemporary design perfect for bedrooms and study desks.",
+                specs: "Material: Solid Wood & Metal | Power: USB Plug-in | Light Temp: Warm White | Switch: Push Button"
             },
             {
                 id: "aesthetic-ergonomic-aluminum-laptop-stand",
@@ -250,7 +263,9 @@
                 altText: "Aesthetic Ergonomic Aluminum Laptop Stand Foldable",
                 affLink: "https://shopee.ph",
                 rating: 4.9,
-                soldCount: "3.4k"
+                soldCount: "3.4k",
+                description: "Improve your posture and prevent neck strain with this foldable aluminum laptop stand. Lightweight, highly stable, and built with heat-dissipating open design.",
+                specs: "Material: Anodized Aluminum | Compatibility: All 10-17 inch laptops | Foldable: Yes | Weight: 250g"
             },
             {
                 id: "insulated-stainless-steel-tumbler",
@@ -265,7 +280,9 @@
                 altText: "Insulated Stainless Steel Tumbler 600ml with Straw",
                 affLink: "https://shopee.ph",
                 rating: 4.7,
-                soldCount: "890"
+                soldCount: "890",
+                description: "Keep your drinks ice-cold or piping hot for hours with this double-wall vacuum insulated stainless steel tumbler. Comes with a leak-proof lid and reusable straw.",
+                specs: "Capacity: 600ml | Material: Food-grade 304 Stainless Steel | Insulation: Double-wall Vacuum (Up to 12h)"
             }
         ];
 
@@ -297,6 +314,8 @@
                             } else if (!p.images || !Array.isArray(p.images)) {
                                 p.images = ['https://placehold.co/400x400/eee/666?text=Shopee+Find'];
                             }
+                            if (!p.description) p.description = "Handpicked and strictly vetted Shopee Budol find from top-rated, reliable merchants. Verified for high buyer satisfaction and genuine quality.";
+                            if (!p.specs) p.specs = `Category: ${p.category} | Verified Rating: ${p.rating || 4.8}/5.0 | Quality Assurance: 100% Vetted`;
                             return p;
                         });
                     }
@@ -623,43 +642,23 @@
                         </div>
                     </div>
 
-                    <!-- NEW: Product Descriptions Section -->
+                    <!-- Product Descriptions Section -->
                     <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
                         <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
                             <i class="fa-solid fa-file-lines text-shopee"></i> Product Descriptions
                         </h3>
                         <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
-                            <p>
-                                Elevate your daily routine with the <strong>${p.title}</strong>. Carefully sourced from verified top-performing Shopee merchants, this item combines premium build quality with outstanding everyday value.
-                            </p>
-                            <p>
-                                Designed for maximum durability, aesthetic appeal, and user convenience. Whether for personal use or as a thoughtful gift, this curated find ensures satisfaction backed by positive community ratings.
-                            </p>
+                            <p>${p.description}</p>
                         </div>
                     </div>
 
-                    <!-- NEW: Product Specifications Section -->
+                    <!-- Product Specifications Section -->
                     <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
                         <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
                             <i class="fa-solid fa-list-check text-shopee"></i> Product Specifications
                         </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
-                            <div class="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-semibold text-slate-500">Category</span>
-                                <span class="font-bold text-slate-800">${p.category}</span>
-                            </div>
-                            <div class="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-semibold text-slate-500">Verified Rating</span>
-                                <span class="font-bold text-amber-500 flex items-center gap-1"><i class="fa-solid fa-star"></i> ${p.rating || 4.8} / 5.0</span>
-                            </div>
-                            <div class="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-semibold text-slate-500">Total Units Sold</span>
-                                <span class="font-bold text-slate-800">${p.soldCount || '1k+'} Verified Orders</span>
-                            </div>
-                            <div class="flex justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                <span class="font-semibold text-slate-500">Quality Assurance</span>
-                                <span class="font-bold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield-check"></i> 100% Vetted</span>
-                            </div>
+                        <div class="text-xs sm:text-sm text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100 leading-relaxed font-mono">
+                            ${p.specs}
                         </div>
                     </div>
                 </div>
@@ -758,6 +757,8 @@
             const altText = document.getElementById('newAltText').value.trim() || title;
             const rawImages = document.getElementById('newImages').value.trim();
             const affLink = document.getElementById('newAffLink').value.trim();
+            const description = document.getElementById('newDescription').value.trim() || "Handpicked and strictly vetted Shopee Budol find from top-rated, reliable merchants. Verified for high buyer satisfaction and genuine quality.";
+            const specs = document.getElementById('newSpecs').value.trim() || `Category: ${category} | Verified Rating: ${rating}/5.0 | Quality Assurance: 100% Vetted`;
 
             let images = rawImages.split(/[\n,;]+/).map(url => url.trim()).filter(url => url.length > 0);
             if (images.length === 0) {
@@ -774,7 +775,9 @@
                 altText,
                 affLink,
                 rating,
-                soldCount
+                soldCount,
+                description,
+                specs
             };
 
             products.unshift(newProd);
@@ -785,7 +788,7 @@
             document.getElementById('addProductForm').reset();
             document.getElementById('newRating').value = "4.9";
             document.getElementById('newSoldCount').value = "100+";
-            showToast("Product added with category & sub-page!");
+            showToast("Product added with specs & descriptions!");
         }
 
         function deleteProduct(index) {
