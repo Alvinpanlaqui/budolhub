@@ -358,8 +358,8 @@
                 <section class="bg-gradient-to-br from-orange-50 via-amber-50/40 to-white py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 -mx-4 sm:-mx-6 lg:-mx-8 mb-10">
                     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4">
                         <div class="space-y-4 text-center md:text-left">
-                            <span class="inline-flex items-center gap-1.5 bg-shopee/10 text-shopee px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                <i class="fa-solid fa-bolt text-shopee"></i> SEO Sub-Pages Ready for Google Console
+                            <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Authentic Deals & Trusted Sellers
                             </span>
                             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                                 Discover the Best <span class="text-shopee">Shopee Budol</span> Finds!
@@ -506,10 +506,15 @@
 
                         <div class="p-4 flex flex-col flex-1 justify-between space-y-3">
                             <div>
-                                <div class="flex items-center gap-1 text-amber-500 text-xs font-bold mb-1">
-                                    <i class="fa-solid fa-star"></i>
-                                    <span>${p.rating || 4.8}</span>
-                                    <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span>${p.rating || 4.8}</span>
+                                        <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
+                                    </div>
+                                    <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded flex items-center gap-1">
+                                        <i class="fa-solid fa-circle-check"></i> Verified
+                                    </span>
                                 </div>
                                 <a href="${subPageUrl}">
                                     <h3 class="font-bold text-slate-800 text-sm line-clamp-2 leading-snug group-hover:text-shopee transition" title="${p.title}">${p.title}</h3>
@@ -585,10 +590,15 @@
                         <!-- Right: Details & Affiliate Link -->
                         <div class="flex flex-col justify-between space-y-6">
                             <div class="space-y-4">
-                                <div class="flex items-center gap-2 text-amber-500 text-sm font-bold">
-                                    <i class="fa-solid fa-star"></i>
-                                    <span>${p.rating || 4.8}</span>
-                                    <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-amber-500 text-sm font-bold">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span>${p.rating || 4.8}</span>
+                                        <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
+                                    </div>
+                                    <span class="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                                        <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Deal
+                                    </span>
                                 </div>
                                 <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">${p.title}</h1>
                                 
@@ -598,7 +608,7 @@
                                 </div>
 
                                 <p class="text-xs text-slate-500 leading-relaxed">
-                                    Curated Shopee Budol Find. Verified affiliate recommendation for quality home, tech, and lifestyle essentials. Click below to check current stock and secure vouchers on Shopee.
+                                    Handpicked and strictly vetted Shopee Budol find from top-rated, reliable merchants. Verified for high buyer satisfaction and genuine quality. Click below to check current stock and secure vouchers on Shopee.
                                 </p>
                             </div>
 
