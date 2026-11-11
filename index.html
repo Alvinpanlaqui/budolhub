@@ -42,9 +42,6 @@
     <!-- Top Banner Notification -->
     <div class="bg-gradient-to-r from-shopee to-orange-500 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm flex items-center justify-center gap-3">
         <span>🔥 Exclusive Shopee Mega Deals & Daily Budol Finds!</span>
-        <div class="flex items-center gap-2">
-            <span class="underline cursor-pointer font-semibold" onclick="openAdminModal()">Admin & Full Code Export</span>
-        </div>
     </div>
 
     <!-- Navigation Bar -->
@@ -548,7 +545,6 @@
             const images = (p.images && p.images.length > 0) ? p.images : ['https://placehold.co/400x400/eee/666?text=Shopee+Find'];
             const activeImg = images[singleProductActiveImgIdx] || images[0];
             const discount = p.originalPrice ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
-            const subPageFullUrl = window.location.href;
 
             const main = document.getElementById('mainContent');
             main.innerHTML = `
@@ -614,17 +610,6 @@
                                     <i class="fa-solid fa-arrow-left"></i> Back to All Catalog Deals
                                 </a>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- SEO Console Indexing Info Box -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 text-xs text-slate-500 space-y-2">
-                        <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-globe text-shopee"></i> Google Console Sub-Page URL for Indexing
-                        </h4>
-                        <p>You can copy this exact sub-page URL and submit it into your Google Search Console URL Inspection tool to index this product independently:</p>
-                        <div class="p-2.5 bg-slate-50 font-mono text-slate-700 rounded-lg border border-slate-200 select-all break-all">
-                            ${subPageFullUrl}
                         </div>
                     </div>
                 </div>
