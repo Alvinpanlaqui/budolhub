@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth"><head>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title id="pageTitle">Budol Finds Hub | Curated Shopee Deals & Verified Kitchenware</title>
+    <meta name="title" content="Budol Finds Hub | Curated Shopee Deals & Verified Kitchenware">
+    <meta name="description" content="Discover the best curated Shopee Budol finds, daily deals, high-quality pressure cookers, home appliances, and aesthetic essentials with verified buyer reviews.">
+    <meta name="keywords" content="Shopee affiliate, Budol finds, pressure cooker deals, kitchen appliances, online shopping Philippines, verified shopee finds">
+    <meta name="author" content="BudolHub">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / Messenger SEO Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freedwg.net/">
+    <meta property="og:title" content="Budol Finds Hub | Curated Shopee Deals">
+    <meta property="og:description" content="Discover curated aesthetic home essentials, viral tech finds, and daily recommended deals through our trusted affiliate links.">
+    <meta property="og:image" content="https://down-ph.img.susercontent.com/file/ph-11134207-81ztj-mhfvp9yg8wsoab">
+
+    <!-- Twitter Card SEO Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://freedwg.net/">
+    <meta property="twitter:title" content="Budol Finds Hub | Curated Shopee Deals">
+    <meta property="twitter:description" content="Discover curated aesthetic home essentials, viral tech finds, and daily recommended deals.">
+    <meta property="twitter:image" content="https://down-ph.img.susercontent.com/file/ph-11134207-81ztj-mhfvp9yg8wsoab">
+
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="https://deo.shopeemobile.com/shopee/shopee-mobilemall-live-sg/assets/icon_favicon_1_32.9cd61b2e90c0f104.png">
+    
     <!-- Prevent Browser Caching -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title id="pageTitle">Budol Finds Hub | Curated Shopee Deals</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -41,6 +67,21 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+
+    <!-- Structured Data (JSON-LD Schema) for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebSite",
+      "name": "Budol Finds Hub",
+      "url": "https://freedwg.net/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://freedwg.net/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-shopee selection:text-white">
 
@@ -52,9 +93,9 @@
     <!-- Navigation Bar -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-            <a href="./" class="flex items-center gap-2 group">
+            <a href="./" class="flex items-center gap-2 group" aria-label="BudolHub Home">
                 <div class="w-10 h-10 rounded-xl bg-shopee flex items-center justify-center text-white font-bold text-xl shadow-md shadow-shopee/30 group-hover:scale-105 transition">
-                    <i class="fa-solid fa-bag-shopping"></i>
+                    <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
                 </div>
                 <div>
                     <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">Budol<span class="text-shopee">Hub</span></span>
@@ -65,9 +106,9 @@
             <!-- Search Bar (Desktop) -->
             <div id="searchContainer" class="hidden md:flex flex-1 max-w-md relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <i class="fa-solid fa-search"></i>
+                    <i class="fa-solid fa-search" aria-hidden="true"></i>
                 </span>
-                <input type="text" id="searchInput" placeholder="Search aesthetic finds, gadgets, kitchenware..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
+                <input type="text" id="searchInput" aria-label="Search products" placeholder="Search aesthetic finds, gadgets, kitchenware..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
             </div>
 
             <!-- Header Action Button -->
@@ -82,9 +123,9 @@
         <div id="mobileSearchContainer" class="md:hidden px-4 pb-3 pt-1 bg-white border-t border-slate-100">
             <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <i class="fa-solid fa-search"></i>
+                    <i class="fa-solid fa-search" aria-hidden="true"></i>
                 </span>
-                <input type="text" id="mobileSearchInput" placeholder="Search products..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
+                <input type="text" id="mobileSearchInput" aria-label="Search products mobile" placeholder="Search products..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
             </div>
         </div>
     </header>
@@ -98,7 +139,7 @@
     <footer class="bg-white border-t border-slate-200 mt-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-3">
         <div class="flex justify-center items-center gap-2 font-bold text-slate-800 text-base">
             <div class="w-6 h-6 rounded bg-shopee text-white flex items-center justify-center text-xs">
-                <i class="fa-solid fa-bag-shopping"></i>
+                <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
             </div>
             BudolHub Shopee Affiliate Storefront
         </div>
@@ -112,6 +153,24 @@
     <script>
         const defaultProducts = [
             {
+                id: "stainless-steel-pressure-cooker-kitchenware-set",
+                title: "Stainless Steel Pressure Cooker 4.3L / 7.3L Gas & Induction Safe with Free 3-Piece Cooking Utensils Gift Set",
+                category: "Home Appliances",
+                price: 1439,
+                originalPrice: 1998,
+                images: [
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztj-mhfvp9yg8wsoab",
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-820li-mpuhi7gx73tac9",
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasg-m22b4v9miwxj4a"
+                ],
+                altText: "Stainless Steel Pressure Cooker with Free Cooking Utensils Set",
+                affLink: "https://s.shopee.ph/8VARUnSkfv",
+                rating: 4.8,
+                soldCount: "500+",
+                description: "Upgrade your kitchen with this heavy-duty Stainless Steel Pressure Cooker. Designed for fast, energy-saving cooking on both gas and induction stoves. Includes a special promotional bundle with a free 3-piece silicone cooking utensil set for the first customers!",
+                specs: "Material: Stainless Steel / Aluminum Alloy | Capacity: 4.3L - 7.3L | Stoves: Gas & Induction Compatible | Free Gift: 3-Piece Utensil Set"
+            },
+            {
                 id: "buy-1-take-1-christmas-gifts-perfume",
                 title: "Buy 1 Take 1 Christmas Gifts Perfume For Woman Long Lasting Pasko Gift Perfume and Body Mist set",
                 category: "Beauty",
@@ -120,10 +179,9 @@
                 images: [
                     "https://down-ph.img.susercontent.com/file/ph-11134207-81ztd-mhg432561m2vf0",
                     "https://down-ph.img.susercontent.com/file/ph-11134207-81ztn-mhg4323yjevcf9",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztd-mhg4325coem9d8",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztm-mhg49h02d8ud86"
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztd-mhg4325coem9d8"
                 ],
-                altText: "Buy 1 Take 1 Christmas Gifts Perfume For Woman Long Lasting Pasko Gift Perfume and Body Mist set",
+                altText: "Buy 1 Take 1 Christmas Gifts Perfume For Woman",
                 affLink: "https://s.shopee.ph/30pUwdg29X",
                 rating: 4.9,
                 soldCount: "1.2k+",
@@ -138,10 +196,9 @@
                 originalPrice: 6999,
                 images: [
                     "https://down-ph.img.susercontent.com/file/ph-11134207-820li-mpuhi7gx73tac9",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasg-m22b4v9miwxj4a",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasj-m22b4v9mkbhb4b"
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasg-m22b4v9miwxj4a"
                 ],
-                altText: "PROMO TOSHIBA Air Fryer AF618D 9L Large Capacity 1400W High Power Multifunctional Less Oil Cooking",
+                altText: "PROMO TOSHIBA Air Fryer AF618D 9L Large Capacity",
                 affLink: "https://s.shopee.ph/8VARUnSkfv",
                 rating: 4.9,
                 soldCount: "3.5k+",
@@ -156,50 +213,14 @@
                 originalPrice: 1299,
                 images: [
                     "https://down-ph.img.susercontent.com/file/cn-11134207-7ras8-m8adalp8cwiaa7",
-                    "https://down-ph.img.susercontent.com/file/cn-11134207-7ras8-m8adalp8eb2qa0",
-                    "https://down-ph.img.susercontent.com/file/cn-11134207-7ras8-m8aewdb93jpu9b"
+                    "https://down-ph.img.susercontent.com/file/cn-11134207-7ras8-m8adalp8eb2qa0"
                 ],
-                altText: "CIVAGO 26oz Ceramic liner Stainless Steel Coffee Mug With Lid Vacuum Flask Tumbler Painting Series",
+                altText: "CIVAGO 26oz Ceramic liner Stainless Steel Coffee Mug",
                 affLink: "https://s.shopee.ph/LojlqE9zR",
                 rating: 4.8,
                 soldCount: "890+",
-                description: "Enjoy your favorite beverages on-the-go with the CIVAGO 26oz Ceramic Liner Stainless Steel Coffee Mug. Designed with a smooth ceramic interior coating that preserves pure taste without metallic aftertaste, paired with vacuum insulation.",
+                description: "Enjoy your favorite beverages on-the-go with the CIVAGO 26oz Ceramic Liner Stainless Steel Coffee Mug. Designed with a smooth ceramic interior coating that preserves pure taste without metallic aftertaste.",
                 specs: "Capacity: 26oz | Lining: Ceramic Inner Coating | Exterior: Stainless Steel Vacuum Flask | Features: With Lid"
-            },
-            {
-                id: "icon-pressure-cooker-3-5-14l",
-                title: "ICON Pressure Cooker 3.5-14L Pressure Universal Multifunctional Vacuum Aluminum Alloy Rice Cookers",
-                category: "Home Appliances",
-                price: 799,
-                originalPrice: 1599,
-                images: [
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l4-mvdzz8v1fv2cde",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztk-miwlunhzwj5s1e",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l8-mv787ldllmv5c6"
-                ],
-                altText: "ICON Pressure Cooker 3.5-14L Pressure Universal Multifunctional Vacuum Aluminum Alloy Rice Cookers",
-                affLink: "https://s.shopee.ph/40i28d05cD",
-                rating: 4.7,
-                soldCount: "2.1k+",
-                description: "Universal multifunctional aluminum alloy pressure cooker by ICON. Built for fast, efficient cooking across multiple capacities from 3.5L to 14L, ensuring perfectly cooked meals with safety locks.",
-                specs: "Material: Aluminum Alloy | Capacities: 3.5L - 14L | Type: Multifunctional Pressure Cooker"
-            },
-            {
-                id: "island-elephant-cloud-series-luggage-travel-bag",
-                title: "ISLAND ELEPHANT CLOUD Series Luggage Travel Bag 7kg Lightweight Sturdy 20/24/28Inch",
-                category: "Sports & Outdoors",
-                price: 1439,
-                originalPrice: 1998,
-                images: [
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l4-mvdzz8v1fv2cde",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-81ztk-miwlunhzwj5s1e"
-                ],
-                altText: "ISLAND ELEPHANT CLOUD Series Luggage Travel Bag 7kg Lightweight Sturdy 20 24 28 Inch",
-                affLink: "https://s.shopee.ph/9V2ygmYZqv",
-                rating: 4.8,
-                soldCount: "500+",
-                description: "Travel in style and comfort with the ISLAND ELEPHANT CLOUD Series Luggage Travel Bag. Extremely lightweight yet sturdy, available in 20, 24, and 28-inch sizes with smooth 360-degree spinner wheels.",
-                specs: "Sizes Available: 20 / 24 / 28 Inch | Weight Allowance: 7kg class | Material: Sturdy Hard Shell"
             },
             {
                 id: "ookas-solar-emergency-lights-rechargeable",
@@ -209,10 +230,9 @@
                 originalPrice: 899,
                 images: [
                     "https://down-ph.img.susercontent.com/file/ph-11134207-820l4-mun62nx18vt176",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l9-mun5my09dn9d4b",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l8-mun5my09vwnb26"
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-820l9-mun5my09dn9d4b"
                 ],
-                altText: "OOKAS Solar Emergency Lights Rechargeable Solar Flashlight LED Flood Camping Light Outdoor Waterproof",
+                altText: "OOKAS Solar Emergency Lights Rechargeable Solar Flashlight",
                 affLink: "https://s.shopee.ph/3g5Bk73GWf",
                 rating: 4.9,
                 soldCount: "4.8k+",
@@ -227,10 +247,9 @@
                 originalPrice: 450,
                 images: [
                     "https://down-ph.img.susercontent.com/file/ph-11134207-7rasm-m0sbtpcgu4903a",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasi-m0sbtprg86x007",
-                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasb-m0sbtrz2zo1a10"
+                    "https://down-ph.img.susercontent.com/file/ph-11134207-7rasi-m0sbtprg86x007"
                 ],
-                altText: "Dirty Clothes Storage Basket Large Laundry Hamper Home Folding Laundry Basket Organizer",
+                altText: "Dirty Clothes Storage Basket Large Laundry Hamper",
                 affLink: "https://s.shopee.ph/8AXb6QuTj6",
                 rating: 4.8,
                 soldCount: "6.3k+",
@@ -326,7 +345,7 @@
                     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4">
                         <div class="space-y-4 text-center md:text-left">
                             <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Authentic Deals &amp; Trusted Sellers
+                                <i class="fa-solid fa-shield-check text-emerald-600" aria-hidden="true"></i> 100% Verified Authentic Deals &amp; Trusted Sellers
                             </span>
                             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                                 Discover the Best <span class="text-shopee">Shopee Budol</span> Finds!
@@ -336,7 +355,7 @@
                             </p>
                             <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                                 <a href="#catalog" class="bg-shopee hover:bg-shopee-dark text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-shopee/30 transition hover:-translate-y-0.5">
-                                    Browse Catalog <i class="fa-solid fa-arrow-down ml-1 text-xs"></i>
+                                    Browse Catalog <i class="fa-solid fa-arrow-down ml-1 text-xs" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -345,7 +364,7 @@
                                 <div class="absolute top-4 right-4 z-10 bg-shopee text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
                                     Featured Deal
                                 </div>
-                                <img src="${products[0] ? products[0].images[0] : ''}" alt="Featured Product" class="w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition duration-500">
+                                <img src="${products[0] ? products[0].images[0] : ''}" alt="${products[0] ? products[0].title : 'Featured Product'}" class="w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition duration-500">
                                 <div class="mt-4 space-y-2">
                                     <h3 class="font-bold text-slate-900 text-base line-clamp-1">${products[0] ? products[0].title : ''}</h3>
                                     <div class="flex items-center justify-between">
@@ -365,7 +384,7 @@
                             <p class="text-sm text-slate-500">Click any product to open its dedicated sub-page for specs, descriptions, and verified deals.</p>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="text-xs font-medium text-slate-500">Sort by:</span>
+                            <label for="sortSelect" class="text-xs font-medium text-slate-500">Sort by:</label>
                             <select id="sortSelect" onchange="changeSort(this.value)" class="bg-white border border-slate-300 text-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-shopee">
                                 <option value="featured" ${currentSort==='featured'?'selected':''}>Featured / Default</option>
                                 <option value="price-low" ${currentSort==='price-low'?'selected':''}>Price: Low to High</option>
@@ -377,17 +396,17 @@
 
                     <!-- Filter Pills with Icons -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categoryPills">
-                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all"></i> All Products</button>
-                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house"></i> Home & Living</button>
-                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-mobile-screen-button"></i> Mobile & Gadgets</button>
-                        <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-plug"></i> Home Appliances</button>
-                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-dress"></i> Women's Apparel</button>
-                        <button onclick="filterCategory('Men\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Men\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-shirt"></i> Men's Apparel</button>
-                        <button onclick="filterCategory('Health & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Health & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-pills"></i> Health & Personal Care</button>
-                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles"></i> Beauty</button>
-                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-baby"></i> Babies & Kids</button>
-                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-futbol"></i> Sports & Outdoors</button>
-                        <button onclick="filterCategory('Groceries')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Groceries'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-basket-shopping"></i> Groceries</button>
+                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Products</button>
+                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house" aria-hidden="true"></i> Home & Living</button>
+                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Mobile & Gadgets</button>
+                        <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-plug" aria-hidden="true"></i> Home Appliances</button>
+                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-dress" aria-hidden="true"></i> Women's Apparel</button>
+                        <button onclick="filterCategory('Men\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Men\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-shirt" aria-hidden="true"></i> Men's Apparel</button>
+                        <button onclick="filterCategory('Health & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Health & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-pills" aria-hidden="true"></i> Health & Personal Care</button>
+                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Beauty</button>
+                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-baby" aria-hidden="true"></i> Babies & Kids</button>
+                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-futbol" aria-hidden="true"></i> Sports & Outdoors</button>
+                        <button onclick="filterCategory('Groceries')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Groceries'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i> Groceries</button>
                     </div>
 
                     <!-- Product Grid -->
@@ -396,7 +415,7 @@
                     <!-- Empty State -->
                     <div id="emptyState" class="hidden text-center py-16">
                         <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-4">
-                            <i class="fa-solid fa-box-open"></i>
+                            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-bold text-slate-700">No products found</h3>
                         <p class="text-sm text-slate-500 mt-1">Try adjusting your search query.</p>
@@ -443,7 +462,7 @@
                 const subPageUrl = `?product=${p.id}`;
 
                 return `
-                    <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 overflow-hidden flex flex-col group transition duration-300">
+                    <article class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 overflow-hidden flex flex-col group transition duration-300">
                         <!-- Image Container with Slider -->
                         <div class="relative overflow-hidden aspect-square bg-slate-100">
                             <span class="absolute top-3 left-3 z-10 bg-shopee text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">
@@ -451,16 +470,16 @@
                             </span>
                             ${discount > 0 ? `<span class="absolute top-3 right-3 z-10 bg-amber-500 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full shadow">-${discount}%</span>` : ''}
                             
-                            <a href="${subPageUrl}">
-                                <img src="${currentImg}" alt="${altText}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/eee/666?text=Shopee+Find'">
+                            <a href="${subPageUrl}" aria-label="${p.title}">
+                                <img src="${currentImg}" alt="${altText}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='https://placehold.co/400x400/eee/666?text=Shopee+Find'">
                             </a>
 
                             ${images.length > 1 ? `
-                                <button onclick="prevCardImage(${p.origIndex}, ${images.length}, event)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
-                                    <i class="fa-solid fa-chevron-left"></i>
+                                <button onclick="prevCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Previous image" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
+                                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                                 </button>
-                                <button onclick="nextCardImage(${p.origIndex}, ${images.length}, event)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
-                                    <i class="fa-solid fa-chevron-right"></i>
+                                <button onclick="nextCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Next image" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
+                                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                                 </button>
                             ` : ''}
                         </div>
@@ -469,8 +488,8 @@
                         ${images.length > 1 ? `
                             <div class="flex items-center gap-1.5 p-2 bg-slate-50 border-t border-slate-100 overflow-x-auto hide-scrollbar">
                                 ${images.map((img, idx) => `
-                                    <button onclick="switchCardImage(${p.origIndex}, ${idx})" class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 border-2 ${idx === activeImgIdx ? 'border-shopee shadow-sm scale-105' : 'border-transparent opacity-70 hover:opacity-100'} transition">
-                                        <img src="${img}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/eee/666?text=Thumb'">
+                                    <button onclick="switchCardImage(${p.origIndex}, ${idx})" aria-label="Switch image ${idx + 1}" class="w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 border-2 ${idx === activeImgIdx ? 'border-shopee shadow-sm scale-105' : 'border-transparent opacity-70 hover:opacity-100'} transition">
+                                        <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://placehold.co/100x100/eee/666?text=Thumb'">
                                     </button>
                                 `).join('')}
                             </div>
@@ -480,12 +499,12 @@
                             <div>
                                 <div class="flex items-center justify-between mb-1">
                                     <div class="flex items-center gap-1 text-amber-500 text-xs font-bold">
-                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star" aria-hidden="true"></i>
                                         <span>${p.rating || 4.8}</span>
                                         <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
                                     </div>
                                     <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded flex items-center gap-1">
-                                        <i class="fa-solid fa-circle-check"></i> Verified
+                                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Verified
                                     </span>
                                 </div>
                                 <a href="${subPageUrl}">
@@ -499,15 +518,15 @@
                                         ${p.originalPrice ? `<span class="text-xs text-slate-400 line-through ml-1">₱${p.originalPrice.toLocaleString()}</span>` : ''}
                                     </div>
                                     <a href="${subPageUrl}" class="text-shopee text-[11px] font-bold hover:underline">
-                                        Sub-page <i class="fa-solid fa-arrow-right ml-0.5"></i>
+                                        Sub-page <i class="fa-solid fa-arrow-right ml-0.5" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                 <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-md shadow-shopee/20 transition transform active:scale-95">
-                                    <i class="fa-solid fa-bag-shopping"></i> Check Price on Shopee
+                                    <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Check Price on Shopee
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 `;
             }).join('');
         }
@@ -525,15 +544,15 @@
 
             const main = document.getElementById('mainContent');
             main.innerHTML = `
-                <div class="max-w-4xl mx-auto space-y-8">
+                <article class="max-w-4xl mx-auto space-y-8">
                     <!-- Breadcrumb Navigation -->
-                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
                         <a href="./" class="hover:text-shopee font-medium">Home</a>
-                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
                         <span class="font-medium text-slate-700">${p.category}</span>
-                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
                         <span class="text-slate-400 truncate max-w-xs">${p.title}</span>
-                    </div>
+                    </nav>
 
                     <!-- Main Product Card -->
                     <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-8">
@@ -551,8 +570,8 @@
                             ${images.length > 1 ? `
                                 <div class="flex items-center gap-2 overflow-x-auto pb-2 hide-scrollbar">
                                     ${images.map((img, idx) => `
-                                        <button onclick="switchSingleImage(${idx})" class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 ${idx === singleProductActiveImgIdx ? 'border-shopee shadow-md scale-105' : 'border-slate-200 opacity-70 hover:opacity-100'} transition">
-                                            <img src="${img}" class="w-full h-full object-cover">
+                                        <button onclick="switchSingleImage(${idx})" aria-label="View image ${idx + 1}" class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 ${idx === singleProductActiveImgIdx ? 'border-shopee shadow-md scale-105' : 'border-slate-200 opacity-70 hover:opacity-100'} transition">
+                                            <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
                                         </button>
                                     `).join('')}
                                 </div>
@@ -564,12 +583,12 @@
                             <div class="space-y-4">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2 text-amber-500 text-sm font-bold">
-                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star" aria-hidden="true"></i>
                                         <span>${p.rating || 4.8}</span>
                                         <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
                                     </div>
                                     <span class="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                                        <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Deal
+                                        <i class="fa-solid fa-shield-check text-emerald-600" aria-hidden="true"></i> 100% Verified Deal
                                     </span>
                                 </div>
                                 <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">${p.title}</h1>
@@ -586,10 +605,10 @@
 
                             <div class="space-y-3 pt-4 border-t border-slate-100">
                                 <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-3.5 px-6 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-shopee/30 transition transform active:scale-95">
-                                    <i class="fa-solid fa-bag-shopping text-base"></i> Buy & Check Price on Shopee
+                                    <i class="fa-solid fa-bag-shopping text-base" aria-hidden="true"></i> Buy & Check Price on Shopee
                                 </a>
                                 <a href="./" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-2xl text-xs flex items-center justify-center gap-2 transition">
-                                    <i class="fa-solid fa-arrow-left"></i> Back to All Catalog Deals
+                                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to All Catalog Deals
                                 </a>
                             </div>
                         </div>
@@ -597,9 +616,9 @@
 
                     <!-- Product Descriptions Section -->
                     <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-file-lines text-shopee"></i> Product Descriptions
-                        </h3>
+                        <h2 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-file-lines text-shopee" aria-hidden="true"></i> Product Descriptions
+                        </h2>
                         <div class="text-xs sm:text-sm text-slate-600 space-y-3 leading-relaxed">
                             <p>${p.description}</p>
                         </div>
@@ -607,14 +626,14 @@
 
                     <!-- Product Specifications Section -->
                     <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h3 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-list-check text-shopee"></i> Product Specifications
-                        </h3>
+                        <h2 class="text-base font-extrabold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-list-check text-shopee" aria-hidden="true"></i> Product Specifications
+                        </h2>
                         <div class="text-xs sm:text-sm text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-100 leading-relaxed font-mono">
                             ${p.specs}
                         </div>
                     </div>
-                </div>
+                </article>
             `;
         }
 
