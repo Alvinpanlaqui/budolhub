@@ -247,7 +247,7 @@
             {
                 id: "buy-1-take-1-christmas-gifts-perfume",
                 title: "Buy 1 Take 1 Christmas Gifts Perfume For Woman Long Lasting Pasko Gift Perfume and Body Mist set",
-                category: "Beauty",
+                category: "Beauty & Personal Care",
                 price: 299,
                 originalPrice: 599,
                 images: [
@@ -319,7 +319,6 @@
                     if (!Array.isArray(products) || products.length === 0) {
                         products = defaultProducts;
                     } else {
-                        // Ensure newly added items are merged if local storage has an older list
                         const existingIds = products.map(p => p.id);
                         defaultProducts.forEach(defP => {
                             if (!existingIds.includes(defP.id)) {
@@ -398,7 +397,7 @@
                                 Discover the Best <span class="text-shopee">Shopee Budol</span> Finds!
                             </h1>
                             <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto md:mx-0">
-                                Browse curated aesthetic home essentials, viral tech finds, sports apparel, and daily recommended deals through our trusted affiliate links.
+                                Browse curated official Shopee categories including home appliances, tech, apparel, beauty essentials, and daily recommended deals.
                             </p>
                             <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
                                 <a href="#catalog" class="bg-shopee hover:bg-shopee-dark text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-shopee/30 transition hover:-translate-y-0.5">
@@ -427,8 +426,8 @@
                 <div id="catalog" class="scroll-mt-20">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900">Curated Product Catalog</h2>
-                            <p class="text-sm text-slate-500">Click any product to open its dedicated sub-page for specs, descriptions, and verified deals.</p>
+                            <h2 class="text-2xl font-bold text-slate-900">Curated Shopee Categories</h2>
+                            <p class="text-sm text-slate-500">Filter through official Shopee categories and click any product for dedicated details.</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <label for="sortSelect" class="text-xs font-medium text-slate-500">Sort by:</label>
@@ -441,14 +440,16 @@
                         </div>
                     </div>
 
-                    <!-- Filter Pills with Icons -->
+                    <!-- Filter Pills matching Shopee Official Categories -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categoryPills">
-                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Products</button>
-                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house" aria-hidden="true"></i> Home & Living</button>
+                        <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Categories</button>
                         <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-plug" aria-hidden="true"></i> Home Appliances</button>
+                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house" aria-hidden="true"></i> Home & Living</button>
                         <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-dress" aria-hidden="true"></i> Women's Apparel</button>
                         <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-baby" aria-hidden="true"></i> Babies & Kids</button>
-                        <button onclick="filterCategory('Beauty')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Beauty</button>
+                        <button onclick="filterCategory('Beauty & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Beauty & Personal Care</button>
+                        <button onclick="filterCategory('Mobile & Gadgets')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Mobile & Gadgets'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Mobile & Gadgets</button>
+                        <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-biking" aria-hidden="true"></i> Sports & Outdoors</button>
                     </div>
 
                     <!-- Product Grid -->
@@ -460,7 +461,7 @@
                             <i class="fa-solid fa-box-open" aria-hidden="true"></i>
                         </div>
                         <h3 class="text-lg font-bold text-slate-700">No products found</h3>
-                        <p class="text-sm text-slate-500 mt-1">Try adjusting your search query.</p>
+                        <p class="text-sm text-slate-500 mt-1">Try adjusting your search query or selecting another category.</p>
                         <button onclick="resetFilters()" class="mt-4 bg-shopee text-white px-4 py-2 rounded-lg text-xs font-semibold shadow hover:bg-shopee-dark transition">Reset All Filters</button>
                     </div>
                 </div>
