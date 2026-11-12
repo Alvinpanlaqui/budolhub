@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
+<html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Budol Finds Hub | Curated Shopee Deals</title>
@@ -9,7 +8,7 @@
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -41,7 +40,7 @@
 
     <!-- Top Banner Notification -->
     <div class="bg-gradient-to-r from-shopee to-orange-500 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm flex items-center justify-center gap-3">
-        <span>🔥 Exclusive Shopee Mega Deals & Daily Budol Finds!</span>
+        <span>🔥 Exclusive Shopee Mega Deals &amp; Daily Budol Finds!</span>
     </div>
 
     <!-- Navigation Bar -->
@@ -69,7 +68,7 @@
             <div class="flex items-center gap-3">
                 <button onclick="openAdminModal()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-full text-xs sm:text-sm font-semibold transition">
                     <i class="fa-solid fa-gear text-shopee"></i>
-                    <span class="hidden sm:inline">Manager & Code Export</span>
+                    <span class="hidden sm:inline">Manager &amp; Code Export</span>
                 </button>
                 <a href="./#catalog" class="bg-shopee hover:bg-shopee-dark text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-md shadow-shopee/20 transition transform active:scale-95">
                     Explore Deals
@@ -90,7 +89,7 @@
 
     <!-- Main Content Dynamic View -->
     <main id="mainContent" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
-        <!-- Rendered dynamically by app router -->
+        <!-- Rendered dynamically -->
     </main>
 
     <!-- Admin & Full Code Export Manager Modal -->
@@ -102,7 +101,7 @@
                         <i class="fa-solid fa-code"></i>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-900 text-base">Product & Full Website Code Export</h3>
+                        <h3 class="font-bold text-slate-900 text-base">Product &amp; Full Website Code Export</h3>
                         <p class="text-[11px] text-slate-500">Add products with official Shopee categories, specs, and export code</p>
                     </div>
                 </div>
@@ -125,15 +124,15 @@
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Category (Shopee Official)</label>
                             <select id="newCategory" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
-                                <option value="Home & Living">🏠 Home & Living</option>
-                                <option value="Mobile & Gadgets">📱 Mobile & Gadgets</option>
+                                <option value="Home &amp; Living">🏠 Home &amp; Living</option>
+                                <option value="Mobile &amp; Gadgets">📱 Mobile &amp; Gadgets</option>
                                 <option value="Home Appliances">🔌 Home Appliances</option>
                                 <option value="Women's Apparel">👗 Women's Apparel</option>
                                 <option value="Men's Apparel">👔 Men's Apparel</option>
-                                <option value="Health & Personal Care">💊 Health & Personal Care</option>
+                                <option value="Health &amp; Personal Care">💊 Health &amp; Personal Care</option>
                                 <option value="Beauty">✨ Beauty</option>
-                                <option value="Babies & Kids">👶 Babies & Kids</option>
-                                <option value="Sports & Outdoors">⚽ Sports & Outdoors</option>
+                                <option value="Babies &amp; Kids">👶 Babies &amp; Kids</option>
+                                <option value="Sports &amp; Outdoors">⚽ Sports &amp; Outdoors</option>
                                 <option value="Groceries">🛒 Groceries</option>
                             </select>
                         </div>
@@ -151,27 +150,27 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Sold Count (e.g. 1.2k, 500+)</label>
-                            <input type="text" id="newSoldCount" value="1.2k+" placeholder="1.2k+" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
+                            <input type="text" id="newSoldCount" value="100+" placeholder="1.2k" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Alt Text for Image SEO</label>
-                            <input type="text" id="newAltText" placeholder="e.g. Industrial wet and dry stainless steel 2000W 19L vacuum cleaner" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
+                            <input type="text" id="newAltText" placeholder="e.g. Nordic Minimalist Bedside Table Lamp with Wooden Stand" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Image URLs <span class="text-slate-400 font-normal">(Separate multiple image links with commas or newlines)</span></label>
-                            <textarea id="newImages" rows="3" required placeholder="https://..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee font-mono"></textarea>
+                            <textarea id="newImages" rows="3" required placeholder="https://images.unsplash.com/photo-1..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee font-mono"></textarea>
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Shopee Affiliate Link</label>
-                            <input type="url" id="newAffLink" required placeholder="https://s.shopee.ph/..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
+                            <input type="url" id="newAffLink" required placeholder="https://shopee.ph/your-link" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee">
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Product Descriptions</label>
-                            <textarea id="newDescription" rows="3" placeholder="Enter detailed product overview..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
+                            <textarea id="newDescription" rows="3" placeholder="Enter detailed product overview and highlights..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
                         </div>
                         <div class="sm:col-span-2">
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Product Specifications</label>
-                            <textarea id="newSpecs" rows="2" placeholder="Rated Power: 2000W | Tank Capacity: 19L..." class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
+                            <textarea id="newSpecs" rows="2" placeholder="Material: Premium Wood | Power: USB Rechargeable" class="w-full text-xs p-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:border-shopee"></textarea>
                         </div>
 
                         <div class="sm:col-span-2 flex justify-end pt-2">
@@ -199,9 +198,7 @@
                 <!-- Product Management List -->
                 <div>
                     <h4 class="font-bold text-slate-800 text-sm mb-3">Current Products in Storage (<span id="adminProductCount">0</span>)</h4>
-                    <div id="adminProductList" class="space-y-2 max-h-52 overflow-y-auto pr-1">
-                        <!-- Dynamic list items -->
-                    </div>
+                    <div id="adminProductList" class="space-y-2 max-h-52 overflow-y-auto pr-1"></div>
                 </div>
             </div>
 
@@ -213,9 +210,9 @@
     </div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
         <i class="fa-solid fa-circle-check text-emerald-400"></i>
-        <span id="toastMessage" class="text-xs sm:text-sm font-medium">Product added successfully!</span>
+        <span id="toastMessage" class="text-xs sm:text-sm font-medium">Product added with official Shopee category &amp; icon!</span>
     </div>
 
     <!-- Footer -->
@@ -236,7 +233,7 @@
     <script>
         const defaultProducts = [
             {
-                id: "industrial-vacuum-cleaner-2000w-19l-wet-dry-stainless-steel-vacuum-cleaner",
+                id: "industrial-vacuum-cleaner-2000w-19l-wet-dry",
                 title: "Industrial Vacuum Cleaner 2000W 19L Wet & Dry Stainless Steel Vacuum Cleaner",
                 category: "Home Appliances",
                 price: 2189,
@@ -250,9 +247,9 @@
                 altText: "Industrial wet and dry stainless steel 2000W 19L vacuum cleaner for home, workshop, and car washing",
                 affLink: "https://s.shopee.ph/2BGNaYKV3L",
                 rating: 4.9,
-                soldCount: "1.2k+",
-                description: "High-performance heavy-duty industrial vacuum cleaner designed for versatile wet and dry cleaning. Features a robust stainless steel tank structure, high suction power capacity, and multi-functional blower capability. Suitable for deep cleaning households, offices, workshops, garages, and car washing applications. Equipped with smooth-rolling caster wheels for effortless maneuverability and transport.",
-                specs: "Rated Power: 2000W | Tank Capacity: 19L / 20L | Cleaning Type: Wet & Dry (and Blower function) | Body Material: Stainless Steel | Voltage/Frequency: 220V / 60Hz | Inclusions: Flexible hose, extension wands, floor brush nozzle, crevice tool, and wheels"
+                soldCount: "10k+",
+                description: "Heavy-duty 2000W wet and dry industrial vacuum cleaner equipped with a large 19L stainless steel tank. Designed for powerful suction performance across home workshops, garages, commercial spaces, and vehicle detailing. Handles both dry dust/debris and liquid spills effortlessly with multi-stage filtration and rugged durability.",
+                specs: "Power: 2000W | Capacity: 19L | Tank Material: Stainless Steel | Function: Wet & Dry | Voltage: 220V"
             },
             {
                 id: "nordic-minimalist-bedside-table-lamp",
@@ -400,7 +397,7 @@
                     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4">
                         <div class="space-y-4 text-center md:text-left">
                             <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                                <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Authentic Deals & Trusted Sellers
+                                <i class="fa-solid fa-shield-check text-emerald-600"></i> 100% Verified Authentic Deals &amp; Trusted Sellers
                             </span>
                             <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
                                 Discover the Best <span class="text-shopee">Shopee Budol</span> Finds!
@@ -780,12 +777,12 @@
             const price = parseFloat(document.getElementById('newPrice').value);
             const originalPrice = parseFloat(document.getElementById('newOriginalPrice').value) || (price * 2);
             const rating = parseFloat(document.getElementById('newRating').value) || 4.9;
-            const soldCount = document.getElementById('newSoldCount').value.trim() || "1.2k+";
+            const soldCount = document.getElementById('newSoldCount').value.trim() || "100+";
             const altText = document.getElementById('newAltText').value.trim() || title;
             const rawImages = document.getElementById('newImages').value.trim();
             const affLink = document.getElementById('newAffLink').value.trim();
-            const description = document.getElementById('newDescription').value.trim() || "High-performance heavy-duty industrial vacuum cleaner designed for versatile wet and dry cleaning.";
-            const specs = document.getElementById('newSpecs').value.trim() || `Rated Power: 2000W | Tank Capacity: 19L`;
+            const description = document.getElementById('newDescription').value.trim() || "Handpicked and strictly vetted Shopee Budol find from top-rated, reliable merchants. Verified for high buyer satisfaction and genuine quality.";
+            const specs = document.getElementById('newSpecs').value.trim() || `Category: ${category} | Verified Rating: ${rating}/5.0 | Quality Assurance: 100% Vetted`;
 
             let images = rawImages.split(/[\n,;]+/).map(url => url.trim()).filter(url => url.length > 0);
             if (images.length === 0) {
@@ -814,8 +811,8 @@
 
             document.getElementById('addProductForm').reset();
             document.getElementById('newRating').value = "4.9";
-            document.getElementById('newSoldCount').value = "1.2k+";
-            showToast("Product added successfully!");
+            document.getElementById('newSoldCount').value = "100+";
+            showToast("Product added with official Shopee category & icon!");
         }
 
         function deleteProduct(index) {
@@ -840,7 +837,7 @@
             updateFullCodeField();
             const textarea = document.getElementById('fullCodeOutput');
             textarea.select();
-            textarea.setSelectionRange(0, 99999;
+            textarea.setSelectionRange(0, 999999);
             document.execCommand('copy');
             showToast("Entire website code copied! Paste it directly into your file on GitHub.");
         }
