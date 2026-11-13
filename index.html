@@ -922,6 +922,46 @@
                         </div>
                     </div>
 
+                    <!-- Thick Sub-Page Content: Comprehensive Product Description -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
+                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-file-lines text-shopee" aria-hidden="true"></i> Comprehensive Product Review &amp; Overview
+                        </h2>
+                        <div class="text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
+                            <p>${p.description}</p>
+                            <p>
+                                When purchasing this item through our official affiliate link, you are guaranteed access to the seller's verified stock inventory, warranty policies (where applicable), and seasonal platform discounts. Be sure to check for coin cashback and free shipping vouchers prior to placing your order.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Thick Sub-Page Content: Technical Specifications -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
+                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-list-check text-shopee" aria-hidden="true"></i> Detailed Technical Specifications
+                        </h2>
+                        <div class="text-xs sm:text-sm text-slate-700 bg-slate-50 p-5 rounded-2xl border border-slate-100 leading-relaxed font-mono">
+                            ${p.specs}
+                        </div>
+                    </div>
+
+                    <!-- Thick Sub-Page Content: Why We Recommend This Item -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
+                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                            <i class="fa-solid fa-award text-shopee" aria-hidden="true"></i> Why BudolHub Recommends This Find
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-600">
+                            <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100 space-y-1.5">
+                                <h3 class="font-bold text-slate-900"><i class="fa-solid fa-check text-shopee mr-1"></i> High Buyer Satisfaction</h3>
+                                <p>Boasts a stellar rating of ${p.rating || 4.8}/5 stars across thousands of verified customer reviews in the Philippines.</p>
+                            </div>
+                            <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100 space-y-1.5">
+                                <h3 class="font-bold text-slate-900"><i class="fa-solid fa-check text-shopee mr-1"></i> Trusted Merchant Partner</h3>
+                                <p>Sourced from high-ranking Shopee Mall & Preferred sellers guaranteeing reliable packaging and quick dispatch.</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- FROM THE SAME SHOP SECTION (Matching Shopee Layout) -->
                     <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-6">
                         <div class="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -987,46 +1027,6 @@
                                     </div>
                                 </div>
                             `).join('')}
-                        </div>
-                    </div>
-
-                    <!-- Thick Sub-Page Content: Comprehensive Product Description -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-file-lines text-shopee" aria-hidden="true"></i> Comprehensive Product Review &amp; Overview
-                        </h2>
-                        <div class="text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
-                            <p>${p.description}</p>
-                            <p>
-                                When purchasing this item through our official affiliate link, you are guaranteed access to the seller's verified stock inventory, warranty policies (where applicable), and seasonal platform discounts. Be sure to check for coin cashback and free shipping vouchers prior to placing your order.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Thick Sub-Page Content: Technical Specifications -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-list-check text-shopee" aria-hidden="true"></i> Detailed Technical Specifications
-                        </h2>
-                        <div class="text-xs sm:text-sm text-slate-700 bg-slate-50 p-5 rounded-2xl border border-slate-100 leading-relaxed font-mono">
-                            ${p.specs}
-                        </div>
-                    </div>
-
-                    <!-- Thick Sub-Page Content: Why We Recommend This Item -->
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-award text-shopee" aria-hidden="true"></i> Why BudolHub Recommends This Find
-                        </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-600">
-                            <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100 space-y-1.5">
-                                <h3 class="font-bold text-slate-900"><i class="fa-solid fa-check text-shopee mr-1"></i> High Buyer Satisfaction</h3>
-                                <p>Boasts a stellar rating of ${p.rating || 4.8}/5 stars across thousands of verified customer reviews in the Philippines.</p>
-                            </div>
-                            <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100 space-y-1.5">
-                                <h3 class="font-bold text-slate-900"><i class="fa-solid fa-check text-shopee mr-1"></i> Trusted Merchant Partner</h3>
-                                <p>Sourced from high-ranking Shopee Mall & Preferred sellers guaranteeing reliable packaging and quick dispatch.</p>
-                            </div>
                         </div>
                     </div>
                 </article>
