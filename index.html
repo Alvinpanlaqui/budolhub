@@ -850,6 +850,9 @@
             const activeImg = images[singleProductActiveImgIdx] || images[0];
             const discount = p.originalPrice ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
 
+            // Get other products for "Other Promoted Products" section (excluding current product)
+            const otherProducts = products.filter(item => item.id !== p.id).slice(0, 4);
+
             const main = document.getElementById('mainContent');
             main.innerHTML = `
                 <article class="max-w-4xl mx-auto space-y-10">
@@ -959,6 +962,42 @@
                                 <h3 class="font-bold text-slate-900"><i class="fa-solid fa-check text-shopee mr-1"></i> Trusted Merchant Partner</h3>
                                 <p>Sourced from high-ranking Shopee Mall & Preferred sellers guaranteeing reliable packaging and quick dispatch.</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- OTHER PROMOTED PRODUCTS SECTION -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider font-extrabold text-shopee bg-orange-50 px-2.5 py-1 rounded-full">Explore More Deals</span>
+                                <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">Other Promoted Products</h2>
+                            </div>
+                            <a href="./" class="text-xs font-bold text-shopee hover:underline flex items-center gap-1">
+                                View All <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                            ${otherProducts.map(op => `
+                                <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 hover:shadow-md transition flex flex-col justify-between space-y-3 group">
+                                    <a href="?product=${op.id}" class="space-y-2">
+                                        <div class="aspect-square bg-white rounded-xl overflow-hidden border border-slate-200 relative">
+                                            <span class="absolute top-2 left-2 z-10 bg-shopee text-white text-[9px] font-bold px-1.5 py-0.5 rounded">${op.category}</span>
+                                            <img src="${op.images[0]}" alt="${op.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy" onerror="this.src='https://placehold.co/300x300/eee/666?text=Promoted+Product'">
+                                        </div>
+                                        <h3 class="font-bold text-slate-800 text-xs line-clamp-2 leading-snug group-hover:text-shopee transition">${op.title}</h3>
+                                    </a>
+                                    <div class="space-y-1.5 pt-2 border-t border-slate-200/60">
+                                        <div class="flex items-baseline justify-between">
+                                            <span class="text-shopee font-extrabold text-sm">₱${op.price.toLocaleString()}</span>
+                                            <span class="text-[10px] text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${op.rating}</span>
+                                        </div>
+                                        <a href="?product=${op.id}" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-1.5 px-2 rounded-lg text-[11px] flex items-center justify-center gap-1 shadow transition">
+                                            View Product <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
 
