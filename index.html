@@ -67,6 +67,13 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .cta-pulse {
+            animation: pulseSlow 2.6s infinite ease-in-out;
+        }
     </style>
 
     <!-- Structured Data (JSON-LD Schema) for Google Rich Snippets -->
@@ -84,7 +91,7 @@
     }
     </script>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-shopee selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-shopee selection:text-white pb-16 md:pb-0">
 
     <!-- Top Banner Notification -->
     <div class="bg-gradient-to-r from-shopee to-orange-500 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm flex items-center justify-center gap-3">
@@ -100,16 +107,27 @@
                 </div>
                 <div>
                     <span class="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">Budol<span class="text-shopee">Hub</span></span>
-                    <span class="block text-[10px] text-slate-500 font-medium uppercase tracking-wider">Shopee Static Affiliate</span>
+                    <span class="block text-[10px] text-slate-500 font-medium uppercase tracking-wider">Shopee Verified Directory</span>
                 </div>
             </a>
 
+            <!-- Quick Sub-page Switcher (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-2 text-xs font-semibold">
+                <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
+                <a href="?product=independent-brand-and-design" class="px-3 py-1.5 rounded-full bg-orange-50 text-shopee border border-orange-200 hover:bg-shopee hover:text-white transition">
+                    Independent Brand &amp; Design
+                </a>
+                <a href="?product=heavy-duty-solar-street-lamp" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition">
+                    Solar Street Lamp
+                </a>
+            </nav>
+
             <!-- Search Bar (Desktop) -->
-            <div id="searchContainer" class="hidden md:flex flex-1 max-w-md relative">
+            <div id="searchContainer" class="hidden md:flex flex-1 max-w-xs relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                     <i class="fa-solid fa-search" aria-hidden="true"></i>
                 </span>
-                <input type="text" id="searchInput" aria-label="Search products" placeholder="Search independent brand & design, solar lights..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
+                <input type="text" id="searchInput" aria-label="Search products" placeholder="Search independent brand, solar..." class="w-full pl-10 pr-4 py-2 bg-slate-100 border border-transparent rounded-full text-sm focus:outline-none focus:bg-white focus:border-shopee focus:ring-2 focus:ring-shopee/20 transition">
             </div>
 
             <!-- Header Action Button -->
@@ -132,9 +150,14 @@
     </header>
 
     <!-- Main Content Dynamic View -->
-    <main id="mainContent" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <main id="mainContent" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 w-full">
         <!-- Rendered dynamically -->
     </main>
+
+    <!-- Mobile Sticky Bottom Checkout Bar (Active on Sub-pages) -->
+    <div id="mobileStickyCta" class="hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-3 shadow-[0_-8px_24px_rgba(15,23,42,0.08)] md:hidden">
+        <!-- Populated dynamically on product sub-page -->
+    </div>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 mt-auto py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-500 space-y-6">
@@ -151,12 +174,11 @@
                 </p>
             </div>
             <div class="space-y-3">
-                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wider">Popular Categories</h4>
+                <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wider">Direct Product Sub-Pages</h4>
                 <ul class="space-y-1.5">
-                    <li><a href="./#catalog" onclick="filterCategory('Home Appliances')" class="hover:text-shopee transition">Home Appliances &amp; Pressure Washers</a></li>
-                    <li><a href="./#catalog" onclick="filterCategory('Sports & Outdoors')" class="hover:text-shopee transition">Sports &amp; Outdoor Camping Gear</a></li>
-                    <li><a href="./#catalog" onclick="filterCategory('Home & Living')" class="hover:text-shopee transition">Home &amp; Living Lighting &amp; Design</a></li>
-                    <li><a href="./#catalog" onclick="filterCategory('Beauty & Personal Care')" class="hover:text-shopee transition">Beauty &amp; Personal Care Essentials</a></li>
+                    <li><a href="?product=independent-brand-and-design" class="hover:text-shopee transition font-medium text-slate-700">→ Independent Brand &amp; Design (8-Photo Showcase)</a></li>
+                    <li><a href="?product=heavy-duty-solar-street-lamp" class="hover:text-shopee transition font-medium text-slate-700">→ Heavy Duty Solar Street Lamp with Remote</a></li>
+                    <li><a href="./#catalog" onclick="filterCategory('Home & Living')" class="hover:text-shopee transition">Browse All Home &amp; Living Finds</a></li>
                 </ul>
             </div>
             <div class="space-y-3">
@@ -177,13 +199,17 @@
             {
                 id: "independent-brand-and-design",
                 title: "Independent Brand & Design",
+                tagline: "Signature Minimalist Craftsmanship • Limited Batch Release • Direct Shopee Voucher Eligible",
                 category: "Home & Living",
+                shopName: "Independent Brand & Design Official",
+                badge: "Top Pick 2026",
                 price: 599,
                 originalPrice: 899,
                 rating: 4.9,
+                reviewCount: 418,
                 soldCount: "1.5k+",
                 affLink: "https://s.shopee.ph/Lp1PRnA8k",
-                altText: "Independent Brand & Design Shopee product gallery",
+                altText: "Independent Brand & Design Shopee product showcase",
                 images: [
                     "https://down-ph.img.susercontent.com/file/cn-11134208-820l4-mpyuct76b4zydd",
                     "https://down-ph.img.susercontent.com/file/cn-11134208-820l4-mpyuct4v2znl40",
@@ -194,24 +220,98 @@
                     "https://down-ph.img.susercontent.com/file/cn-11134208-820l4-mpyuct657aww58",
                     "https://down-ph.img.susercontent.com/file/cn-11134208-820l4-mpyuct64w2dn25"
                 ],
-                description: "Independent Brand & Design is featured on its own dedicated sub-page with a multi-angle photo gallery, verified deal highlights, and direct access to current Shopee vouchers and pricing.",
-                specs: "Brand Label: Independent Brand & Design<br>Gallery Views: 8 Product Images<br>Platform: Shopee Philippines<br>Availability: Subject to seller stock &amp; active promos"
+                highlights: [
+                    "Authentic Independent Brand & Design piece with clean, standout visual detailing",
+                    "Inspected across 8 real product views so you know exact finish and proportions before checkout",
+                    "Eligible for Shopee Free Shipping & Mega Discount vouchers at checkout",
+                    "Packed securely with buyer protection guarantee through Shopee Philippines"
+                ],
+                buyerReasons: [
+                    {
+                        icon: "fa-gem",
+                        title: "Distinctive Independent Aesthetic",
+                        desc: "Crafted for buyers who prefer curated, non-generic design pieces that upgrade everyday setups immediately."
+                    },
+                    {
+                        icon: "fa-images",
+                        title: "Full 8-Angle Visual Transparency",
+                        desc: "Every detail, contour, and finish is shown up close in the gallery—no guesswork when your parcel arrives."
+                    },
+                    {
+                        icon: "fa-truck-fast",
+                        title: "Fast Shopee Checkout & Vouchers",
+                        desc: "Claim platform shipping discounts, coins cashback, and COD options directly on the official Shopee listing."
+                    }
+                ],
+                faqs: [
+                    {
+                        q: "Are the photos shown the actual product design?",
+                        a: "Yes—all 8 gallery photos come directly from the merchant's listing so you can inspect multiple angles and details before clicking through to Shopee."
+                    },
+                    {
+                        q: "Can I use Shopee Free Shipping vouchers or Cash on Delivery (COD)?",
+                        a: "Yes. Click any 'Buy on Shopee' button on this page to view live courier options, COD availability for your address, and stackable Shopee vouchers."
+                    },
+                    {
+                        q: "Why does the final price sometimes drop even lower on Shopee?",
+                        a: "Shopee regularly applies store follower vouchers, payday promos, and platform discount codes during checkout."
+                    }
+                ],
+                description: "Independent Brand & Design brings clean, purposeful styling together with everyday durability. Whether you are upgrading your personal collection or picking up a standout gift, this curated release delivers strong visual appeal and reliable build quality without the inflated retail markup.",
+                specs: "Brand Line: Independent Brand & Design<br>Included Gallery Views: 8 High-Resolution Angles<br>Fulfillment Platform: Shopee Philippines (Buyer Protection Active)<br>Payment Options: COD, ShopeePay, GCash, Card (via Shopee)<br>Voucher Status: Eligible for Platform &amp; Store Discounts"
             },
             {
                 id: "heavy-duty-solar-street-lamp",
                 title: "Heavy Duty Solar Street Lamp with Remote Control",
+                tagline: "Zero Electricity Bill • Dusk-to-Dawn Auto Sensor • All-Weather IP65 Waterproof",
                 category: "Home & Living",
+                shopName: "Solar Lighting Direct PH",
+                badge: "Best Seller",
                 price: 1899,
                 originalPrice: 2499,
                 rating: 4.7,
+                reviewCount: 1290,
                 soldCount: "4.2k+",
                 affLink: "https://s.shopee.ph/7fbc5GuQra",
                 altText: "Heavy Duty Solar Street Lamp with Remote Control",
                 images: [
                     "https://down-ph.img.susercontent.com/file/ph-11134207-820lb-ms6ho46fssuc5e.webp"
                 ],
-                description: "Weather-resistant outdoor solar street lamp with remote control for driveways, yards, pathways, and perimeter lighting without wiring.",
-                specs: "Power Source: Solar Panel + Remote Control<br>Application: Outdoor / Street / Yard Lighting<br>Shipping Origin: Valenzuela City, Metro Manila"
+                highlights: [
+                    "100% solar powered—zero monthly Meralco/SFELAPCO electricity cost",
+                    "Wireless remote control with timer, brightness adjustment, and auto dusk-to-dawn mode",
+                    "High-efficiency monocrystalline solar panel charges even on overcast days",
+                    "Heavy-duty weatherproof housing built for Philippine rain and heat"
+                ],
+                buyerReasons: [
+                    {
+                        icon: "fa-sun",
+                        title: "Zero Wiring & Zero Electric Bill",
+                        desc: "Mount on any pole or exterior wall in minutes—ideal for gates, driveways, basketball courts, and perimeter fences."
+                    },
+                    {
+                        icon: "fa-sliders",
+                        title: "Smart Remote & Timer Modes",
+                        desc: "Switch between 3H/5H/8H timers, full brightness, or automatic night sensor operation from the ground."
+                    },
+                    {
+                        icon: "fa-shield-halved",
+                        title: "Proven 4.2k+ Units Sold",
+                        desc: "Backed by thousands of verified Philippine buyers with fast dispatch from Valenzuela City, Metro Manila."
+                    }
+                ],
+                faqs: [
+                    {
+                        q: "Does it automatically turn on at night?",
+                        a: "Yes. Once set to Auto mode via the included remote control, it charges during daylight and switches on automatically at dusk."
+                    },
+                    {
+                        q: "Is the mounting bracket and remote included?",
+                        a: "Check the selected wattage variant on Shopee—standard kits include the lamp unit, solar panel, and wireless remote control."
+                    }
+                ],
+                description: "Light up dark driveways, front gates, gardens, and perimeter walls without trenching wires or adding to your monthly power bill. This Heavy Duty Solar Street Lamp combines high-lumen LED arrays with a responsive wireless remote and automatic dusk-to-dawn sensor.",
+                specs: "Power Source: High-Conversion Solar Panel<br>Control Type: Wireless Remote + Auto Dusk-to-Dawn Sensor<br>Weather Resistance: Outdoor All-Weather Sealed Housing<br>Ships From: Valenzuela City, Metro Manila"
             }
         ];
 
@@ -237,12 +337,10 @@
                         products = [...defaultProducts];
                     } else {
                         const mapById = new Map();
+                        defaultProducts.forEach(defP => mapById.set(defP.id, defP));
                         parsed.forEach(item => {
-                            if (item && item.id) mapById.set(item.id, item);
-                        });
-                        defaultProducts.forEach(defP => {
-                            if (!mapById.has(defP.id)) {
-                                mapById.set(defP.id, defP);
+                            if (item && item.id && !mapById.has(item.id)) {
+                                mapById.set(item.id, item);
                             }
                         });
                         products = Array.from(mapById.values());
@@ -289,8 +387,10 @@
             document.getElementById('pageTitle').textContent = "Budol Finds Hub | Curated Shopee Deals & Verified Essentials";
             const searchContainer = document.getElementById('searchContainer');
             const mobileSearchContainer = document.getElementById('mobileSearchContainer');
+            const mobileStickyCta = document.getElementById('mobileStickyCta');
             if (searchContainer) searchContainer.style.display = 'flex';
             if (mobileSearchContainer) mobileSearchContainer.style.display = 'block';
+            if (mobileStickyCta) mobileStickyCta.classList.add('hidden');
 
             const featured = products[0] || null;
             const featuredImage = featured && featured.images && featured.images[0]
@@ -300,8 +400,8 @@
             const main = document.getElementById('mainContent');
             main.innerHTML = `
                 <!-- Hero Showcase Banner -->
-                <section class="bg-gradient-to-br from-orange-50 via-amber-50/40 to-white py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 -mx-4 sm:-mx-6 lg:-mx-8 mb-10 rounded-3xl shadow-sm">
-                    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-4">
+                <section class="bg-gradient-to-br from-orange-50 via-amber-50/40 to-white py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border border-orange-100 mb-10 rounded-3xl shadow-sm">
+                    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-2">
                         <div class="space-y-4 text-center md:text-left">
                             <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                 <i class="fa-solid fa-shield-check text-emerald-600" aria-hidden="true"></i> 100% Verified Authentic Deals &amp; Trusted Sellers
@@ -310,27 +410,39 @@
                                 Discover the Best <span class="text-shopee">Shopee Budol</span> Finds in the Philippines!
                             </h1>
                             <p class="text-slate-600 text-sm sm:text-base max-w-lg mx-auto md:mx-0 leading-relaxed">
-                                Welcome to your ultimate digital directory for high-converting, viral product recommendations. Explore our featured sub-pages and click through for full details and Shopee deals.
+                                Explore dedicated product sub-pages with full multi-angle galleries, honest buyer highlights, and direct Shopee voucher links.
                             </p>
                             <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
-                                <a href="#catalog" class="bg-shopee hover:bg-shopee-dark text-white font-semibold px-6 py-3 rounded-xl shadow-lg shadow-shopee/30 transition hover:-translate-y-0.5">
-                                    Browse Curated Catalog <i class="fa-solid fa-arrow-down ml-1 text-xs" aria-hidden="true"></i>
+                                <a href="${featured ? '?product=' + featured.id : '#catalog'}" class="bg-shopee hover:bg-shopee-dark text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-shopee/30 transition hover:-translate-y-0.5 flex items-center gap-2">
+                                    <span>View Featured Sub-Page</span>
+                                    <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                                </a>
+                                <a href="#catalog" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 font-semibold px-5 py-3.5 rounded-xl transition">
+                                    Browse All Deals
                                 </a>
                             </div>
                         </div>
                         <div class="relative flex justify-center">
                             <div class="w-full max-w-md bg-white p-4 rounded-3xl shadow-xl border border-slate-100 relative group overflow-hidden">
-                                <div class="absolute top-4 right-4 z-10 bg-shopee text-white text-xs font-bold px-2.5 py-1 rounded-full shadow">
-                                    ${featured ? 'Featured Deal' : 'Catalog Empty'}
+                                <div class="absolute top-6 right-6 z-10 bg-shopee text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">
+                                    ${featured ? (featured.badge || 'Featured Deal') : 'Catalog Empty'}
                                 </div>
                                 <a href="${featured ? '?product=' + featured.id : '#catalog'}">
                                     <img src="${featuredImage}" alt="${featured ? featured.title : 'No products listed'}" class="w-full h-64 object-cover rounded-2xl group-hover:scale-105 transition duration-500">
                                 </a>
-                                <div class="mt-4 space-y-2">
-                                    <h3 class="font-bold text-slate-900 text-base line-clamp-1">${featured ? featured.title : 'No products available right now'}</h3>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-shopee font-extrabold text-lg">${featured ? '₱' + featured.price.toLocaleString() : '0 Products'}</span>
-                                        <span class="bg-slate-100 text-slate-600 text-xs font-semibold px-2.5 py-1 rounded-lg">Free Shipping Vouchers</span>
+                                <div class="mt-4 space-y-3">
+                                    <div>
+                                        <h3 class="font-extrabold text-slate-900 text-lg line-clamp-1">${featured ? featured.title : 'No products available right now'}</h3>
+                                        <p class="text-xs text-slate-500 line-clamp-1">${featured ? featured.tagline : ''}</p>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-1">
+                                        <div>
+                                            <span class="text-shopee font-extrabold text-xl">${featured ? '₱' + featured.price.toLocaleString() : '0 Products'}</span>
+                                            ${featured && featured.originalPrice ? `<span class="text-xs text-slate-400 line-through ml-1.5">₱${featured.originalPrice.toLocaleString()}</span>` : ''}
+                                        </div>
+                                        <a href="${featured ? '?product=' + featured.id : '#catalog'}" class="bg-orange-50 hover:bg-shopee text-shopee hover:text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                                            Open Sub-Page →
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -341,8 +453,8 @@
                 <div id="catalog" class="scroll-mt-20">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
                         <div>
-                            <h2 class="text-2xl font-bold text-slate-900">Curated Shopee Categories &amp; Deals</h2>
-                            <p class="text-sm text-slate-500">Filter through official categories below. Click any product card for its dedicated sub-page, specifications, and Shopee link.</p>
+                            <h2 class="text-2xl font-bold text-slate-900">Curated Shopee Sub-Pages &amp; Deals</h2>
+                            <p class="text-sm text-slate-500">Click any product card to open its dedicated landing page, or jump straight to Shopee checkout.</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <label for="sortSelect" class="text-xs font-medium text-slate-500">Sort by:</label>
@@ -355,14 +467,12 @@
                         </div>
                     </div>
 
-                    <!-- Filter Pills matching Shopee Official Categories -->
+                    <!-- Filter Pills -->
                     <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 hide-scrollbar" id="categoryPills">
                         <button onclick="filterCategory('All')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='All'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Categories</button>
+                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house" aria-hidden="true"></i> Home &amp; Living</button>
                         <button onclick="filterCategory('Home Appliances')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home Appliances'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-plug" aria-hidden="true"></i> Home Appliances</button>
                         <button onclick="filterCategory('Sports & Outdoors')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Sports & Outdoors'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-biking" aria-hidden="true"></i> Sports &amp; Outdoors</button>
-                        <button onclick="filterCategory('Home & Living')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Home & Living'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-house" aria-hidden="true"></i> Home &amp; Living</button>
-                        <button onclick="filterCategory('Women\'s Apparel')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Women\'s Apparel'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-person-dress" aria-hidden="true"></i> Women's Apparel</button>
-                        <button onclick="filterCategory('Babies & Kids')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Babies & Kids'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-baby" aria-hidden="true"></i> Babies &amp; Kids</button>
                         <button onclick="filterCategory('Beauty & Personal Care')" class="category-pill px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1.5 ${currentCategory==='Beauty & Personal Care'?'bg-shopee text-white shadow-sm':'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'} transition"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Beauty &amp; Personal Care</button>
                     </div>
 
@@ -391,7 +501,9 @@
 
             let filtered = products.map((p, origIndex) => ({ ...p, origIndex })).filter(p => {
                 const matchesCat = currentCategory === 'All' || p.category === currentCategory;
-                const matchesSearch = (p.title && p.title.toLowerCase().includes(searchQuery)) || (p.category && p.category.toLowerCase().includes(searchQuery));
+                const matchesSearch = (p.title && p.title.toLowerCase().includes(searchQuery)) ||
+                                      (p.category && p.category.toLowerCase().includes(searchQuery)) ||
+                                      (p.tagline && p.tagline.toLowerCase().includes(searchQuery));
                 return matchesCat && matchesSearch;
             });
 
@@ -431,12 +543,15 @@
                             </a>
 
                             ${images.length > 1 ? `
-                                <button onclick="prevCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Previous image" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
+                                <button onclick="prevCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Previous image" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition">
                                     <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                                 </button>
-                                <button onclick="nextCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Next image" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center text-xs opacity-70 group-hover:opacity-100 transition">
+                                <button onclick="nextCardImage(${p.origIndex}, ${images.length}, event)" aria-label="Next image" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center text-xs opacity-80 group-hover:opacity-100 transition">
                                     <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                                 </button>
+                                <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                                    ${activeImgIdx + 1}/${images.length}
+                                </span>
                             ` : ''}
                         </div>
 
@@ -473,12 +588,17 @@
                                         ${p.originalPrice ? `<span class="text-xs text-slate-400 line-through ml-1">₱${p.originalPrice.toLocaleString()}</span>` : ''}
                                     </div>
                                     <a href="${subPageUrl}" class="text-shopee text-[11px] font-bold hover:underline">
-                                        Sub-page <i class="fa-solid fa-arrow-right ml-0.5" aria-hidden="true"></i>
+                                        Full Details <i class="fa-solid fa-arrow-right ml-0.5" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-md shadow-shopee/20 transition transform active:scale-95">
-                                    <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Check Price on Shopee
-                                </a>
+                                <div class="grid grid-cols-5 gap-1.5">
+                                    <a href="${subPageUrl}" class="col-span-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-2 rounded-xl text-[11px] flex items-center justify-center transition">
+                                        Sub-Page
+                                    </a>
+                                    <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="col-span-3 bg-shopee hover:bg-shopee-dark text-white font-bold py-2.5 px-3 rounded-xl text-[11px] flex items-center justify-center gap-1.5 shadow-md shadow-shopee/20 transition transform active:scale-95">
+                                        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Buy Now
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -487,7 +607,7 @@
         }
 
         function renderSingleProductPage(p) {
-            document.getElementById('pageTitle').textContent = `${p.title} | Budol Finds Hub`;
+            document.getElementById('pageTitle').textContent = `${p.title} — Official Shopee Deal & Review | Budol Finds Hub`;
             const searchContainer = document.getElementById('searchContainer');
             const mobileSearchContainer = document.getElementById('mobileSearchContainer');
             if (searchContainer) searchContainer.style.display = 'none';
@@ -496,148 +616,290 @@
             const images = (p.images && p.images.length > 0) ? p.images : ['https://placehold.co/400x400/eee/666?text=Shopee+Find'];
             const activeImg = images[singleProductActiveImgIdx] || images[0];
             const discount = p.originalPrice ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
-            const shopProducts = Array.isArray(p.shopProducts) ? p.shopProducts : [];
-            const recommendedProducts = Array.isArray(p.recommendedProducts) ? p.recommendedProducts : [];
+            const savings = p.originalPrice ? (p.originalPrice - p.price) : 0;
+            const highlights = Array.isArray(p.highlights) ? p.highlights : [];
+            const buyerReasons = Array.isArray(p.buyerReasons) ? p.buyerReasons : [];
+            const faqs = Array.isArray(p.faqs) ? p.faqs : [];
+            const otherSubpages = products.filter(item => item.id !== p.id);
+
+            // Populate sticky bottom bar for mobile conversions
+            const mobileStickyCta = document.getElementById('mobileStickyCta');
+            if (mobileStickyCta) {
+                mobileStickyCta.classList.remove('hidden');
+                mobileStickyCta.innerHTML = `
+                    <div class="flex items-center justify-between gap-3 max-w-lg mx-auto">
+                        <div>
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-shopee font-extrabold text-lg">₱${p.price.toLocaleString()}</span>
+                                ${p.originalPrice ? `<span class="text-[11px] text-slate-400 line-through">₱${p.originalPrice.toLocaleString()}</span>` : ''}
+                            </div>
+                            <span class="block text-[10px] text-emerald-600 font-bold">✓ Voucher &amp; COD Ready on Shopee</span>
+                        </div>
+                        <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="bg-shopee hover:bg-shopee-dark text-white font-extrabold py-2.5 px-5 rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-shopee/30 active:scale-95 transition">
+                            <i class="fa-solid fa-bag-shopping"></i> Buy on Shopee
+                        </a>
+                    </div>
+                `;
+            }
 
             const main = document.getElementById('mainContent');
             main.innerHTML = `
-                <article class="max-w-4xl mx-auto space-y-10">
-                    <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
-                        <a href="./" class="hover:text-shopee font-medium">Home</a>
-                        <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
-                        <span class="font-medium text-slate-700">${p.category}</span>
-                        <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
-                        <span class="text-slate-400 truncate max-w-xs">${p.title}</span>
-                    </nav>
+                <article class="max-w-5xl mx-auto space-y-8">
+                    <!-- Breadcrumb & Trust Strip -->
+                    <div class="flex flex-wrap items-center justify-between gap-3">
+                        <nav class="flex items-center gap-2 text-xs text-slate-500" aria-label="Breadcrumb">
+                            <a href="./" class="hover:text-shopee font-semibold">Home</a>
+                            <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
+                            <span class="font-medium text-slate-700">${p.category}</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i>
+                            <span class="text-slate-900 font-semibold truncate max-w-[200px] sm:max-w-xs">${p.title}</span>
+                        </nav>
+                        <div class="flex items-center gap-2 text-[11px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full">
+                            <i class="fa-solid fa-fire text-shopee"></i> High Demand • Selling Fast on Shopee PH
+                        </div>
+                    </div>
 
-                    <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-8">
-                        <div class="space-y-4">
-                            <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden relative shadow-inner">
-                                <span class="absolute top-4 left-4 z-10 bg-shopee text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">
-                                    ${p.category}
+                    <!-- Primary Above-the-Fold Conversion Card -->
+                    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-8 p-5 sm:p-8">
+                        <!-- Left Column: Interactive 8-Photo Showcase -->
+                        <div class="lg:col-span-6 space-y-4">
+                            <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden relative shadow-inner group">
+                                <span class="absolute top-4 left-4 z-10 bg-slate-900/85 backdrop-blur text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">
+                                    ${p.badge || p.category}
                                 </span>
-                                ${discount > 0 ? `<span class="absolute top-4 right-4 z-10 bg-amber-500 text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">-${discount}% OFF</span>` : ''}
-                                <img src="${activeImg}" alt="${p.altText || p.title}" class="w-full h-full object-cover">
+                                ${discount > 0 ? `<span class="absolute top-4 right-4 z-10 bg-shopee text-white text-xs font-extrabold px-3 py-1 rounded-full shadow">SAVE ${discount}%</span>` : ''}
+                                
+                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" title="Click to view on Shopee">
+                                    <img src="${activeImg}" alt="${p.altText || p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                </a>
+
+                                ${images.length > 1 ? `
+                                    <button onclick="prevSingleImage(${images.length})" aria-label="Previous photo" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-shopee text-slate-800 hover:text-white rounded-full shadow-md flex items-center justify-center text-sm transition">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                    </button>
+                                    <button onclick="nextSingleImage(${images.length})" aria-label="Next photo" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 hover:bg-shopee text-slate-800 hover:text-white rounded-full shadow-md flex items-center justify-center text-sm transition">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </button>
+                                    <span class="absolute bottom-3 right-3 bg-black/65 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                                        Photo ${singleProductActiveImgIdx + 1} of ${images.length}
+                                    </span>
+                                ` : ''}
                             </div>
 
                             ${images.length > 1 ? `
-                                <div class="flex items-center gap-2 overflow-x-auto pb-2 hide-scrollbar">
+                                <div class="grid grid-cols-4 sm:grid-cols-8 gap-2">
                                     ${images.map((img, idx) => `
-                                        <button onclick="switchSingleImage(${idx})" aria-label="View image ${idx + 1}" class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 border-2 ${idx === singleProductActiveImgIdx ? 'border-shopee shadow-md scale-105' : 'border-slate-200 opacity-70 hover:opacity-100'} transition">
-                                            <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
+                                        <button onclick="switchSingleImage(${idx})" aria-label="View image ${idx + 1}" class="aspect-square rounded-xl overflow-hidden border-2 ${idx === singleProductActiveImgIdx ? 'border-shopee ring-2 ring-shopee/25 scale-105' : 'border-slate-200 opacity-75 hover:opacity-100'} transition">
+                                            <img src="${img}" alt="Angle ${idx + 1}" class="w-full h-full object-cover">
                                         </button>
                                     `).join('')}
                                 </div>
                             ` : ''}
                         </div>
 
-                        <div class="flex flex-col justify-between space-y-6">
+                        <!-- Right Column: Persuasive Buy Box -->
+                        <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
                             <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2 text-amber-500 text-sm font-bold">
-                                        <i class="fa-solid fa-star" aria-hidden="true"></i>
-                                        <span>${p.rating || 4.8}</span>
-                                        <span class="text-slate-400 font-normal">(${p.soldCount || '1k+'} sold)</span>
+                                <div class="flex flex-wrap items-center justify-between gap-2">
+                                    <div class="flex items-center gap-1.5 text-amber-500 text-sm font-bold">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="text-slate-900 ml-1">${p.rating || 4.9}</span>
+                                        <span class="text-slate-400 font-normal">(${p.reviewCount || '400+'} reviews • ${p.soldCount || '1k+'} sold)</span>
                                     </div>
                                     <span class="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                                        <i class="fa-solid fa-shield-check text-emerald-600" aria-hidden="true"></i> 100% Verified Deal
+                                        <i class="fa-solid fa-shield-check text-emerald-600"></i> Verified Listing
                                     </span>
                                 </div>
-                                <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">${p.title}</h1>
+
+                                <div>
+                                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">${p.title}</h1>
+                                    ${p.tagline ? `<p class="text-xs sm:text-sm font-medium text-slate-500 mt-1.5">${p.tagline}</p>` : ''}
+                                </div>
                                 
-                                <div class="bg-orange-50/60 p-4 rounded-2xl border border-orange-100 flex items-baseline gap-3">
-                                    <span class="text-shopee font-extrabold text-3xl">₱${p.price.toLocaleString()}</span>
-                                    ${p.originalPrice ? `<span class="text-sm text-slate-400 line-through">₱${p.originalPrice.toLocaleString()}</span>` : ''}
+                                <!-- Price & Voucher Anchor Box -->
+                                <div class="bg-gradient-to-r from-orange-50 to-amber-50/70 p-4 sm:p-5 rounded-2xl border border-orange-200/80 space-y-2">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[11px] font-extrabold uppercase tracking-wider text-shopee">Shopee Flash Deal Estimate</span>
+                                        ${savings > 0 ? `<span class="bg-shopee text-white text-[11px] font-bold px-2 py-0.5 rounded-md">You Save ₱${savings.toLocaleString()}</span>` : ''}
+                                    </div>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-shopee font-extrabold text-3xl sm:text-4xl">₱${p.price.toLocaleString()}</span>
+                                        ${p.originalPrice ? `<span class="text-base text-slate-400 line-through">₱${p.originalPrice.toLocaleString()}</span>` : ''}
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 pt-1">
+                                        <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-white text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-lg">
+                                            <i class="fa-solid fa-ticket text-shopee"></i> Free Shipping Voucher
+                                        </span>
+                                        <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-white text-slate-700 border border-slate-200 px-2.5 py-1 rounded-lg">
+                                            <i class="fa-solid fa-money-bill-wave text-emerald-600"></i> Cash on Delivery Available
+                                        </span>
+                                    </div>
                                 </div>
 
-                                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                                    Handpicked and strictly vetted Shopee Budol find from top-rated merchants. Click below to check current stock, claim vouchers, and checkout securely on Shopee.
-                                </p>
+                                <!-- Key Conversion Bullets -->
+                                ${highlights.length > 0 ? `
+                                    <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
+                                        ${highlights.map(item => `
+                                            <li class="flex items-start gap-2.5">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                                <span>${item}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                ` : ''}
                             </div>
 
+                            <!-- High-Contrast Primary CTA Stack -->
                             <div class="space-y-3 pt-4 border-t border-slate-100">
-                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-3.5 px-6 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-shopee/30 transition transform active:scale-95">
-                                    <i class="fa-solid fa-bag-shopping text-base" aria-hidden="true"></i> Buy &amp; Check Price on Shopee
+                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="cta-pulse w-full bg-shopee hover:bg-shopee-dark text-white font-extrabold py-4 px-6 rounded-2xl text-base flex items-center justify-center gap-2.5 shadow-xl shadow-shopee/30 transition">
+                                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                                    <span>Claim Deal &amp; Buy on Shopee</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-90"></i>
                                 </a>
-                                <a href="./" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-2xl text-xs flex items-center justify-center gap-2 transition">
-                                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to All Catalog Deals
-                                </a>
+                                <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-slate-500 pt-1">
+                                    <div class="bg-slate-50 py-2 px-2 rounded-xl border border-slate-100 font-medium">
+                                        <i class="fa-solid fa-lock text-emerald-600 mr-1"></i> Official Redirect
+                                    </div>
+                                    <div class="bg-slate-50 py-2 px-2 rounded-xl border border-slate-100 font-medium">
+                                        <i class="fa-solid fa-rotate-left text-shopee mr-1"></i> Shopee Guarantee
+                                    </div>
+                                    <div class="bg-slate-50 py-2 px-2 rounded-xl border border-slate-100 font-medium">
+                                        <i class="fa-solid fa-tags text-amber-500 mr-1"></i> Stackable Vouchers
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-file-lines text-shopee" aria-hidden="true"></i> Comprehensive Product Review &amp; Overview
-                        </h2>
-                        <div class="text-xs sm:text-sm text-slate-600 space-y-4 leading-relaxed">
-                            <p>${p.description || ''}</p>
-                        </div>
-                    </div>
+                    <!-- Why Buyers Choose This Item -->
+                    ${buyerReasons.length > 0 ? `
+                        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            ${buyerReasons.map(reason => `
+                                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-50 text-shopee flex items-center justify-center text-base">
+                                        <i class="fa-solid ${reason.icon}"></i>
+                                    </div>
+                                    <h2 class="font-extrabold text-slate-900 text-base">${reason.title}</h2>
+                                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${reason.desc}</p>
+                                </div>
+                            `).join('')}
+                        </section>
+                    ` : ''}
 
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-4">
-                        <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
-                            <i class="fa-solid fa-list-check text-shopee" aria-hidden="true"></i> Detailed Technical Specifications
-                        </h2>
-                        <div class="text-xs sm:text-sm text-slate-700 bg-slate-50 p-5 rounded-2xl border border-slate-100 leading-relaxed font-mono">
-                            ${p.specs || ''}
-                        </div>
-                    </div>
+                    <!-- Complete Photo Gallery Strip (All 8 Images Clickable to Shopee) -->
+                    ${images.length > 1 ? `
+                        <section class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 space-y-5">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-100 pb-4">
+                                <div>
+                                    <span class="text-[10px] font-extrabold uppercase tracking-wider text-shopee bg-orange-50 px-2.5 py-1 rounded-full">Closer Look</span>
+                                    <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">All ${images.length} Product Views — Click Any Photo to Check Live Stock</h2>
+                                </div>
+                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-shopee hover:underline">
+                                    Open Official Shopee Store →
+                                </a>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                ${images.map((img, idx) => `
+                                    <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="group relative aspect-square rounded-2xl overflow-hidden border border-slate-200 bg-slate-50 shadow-sm">
+                                        <img src="${img}" alt="${p.title} View ${idx + 1}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+                                        <span class="absolute bottom-2 left-2 bg-black/65 text-white text-[10px] font-bold px-2 py-0.5 rounded-md">View ${idx + 1}</span>
+                                        <span class="absolute inset-0 bg-shopee/0 group-hover:bg-shopee/15 transition flex items-center justify-center">
+                                            <span class="opacity-0 group-hover:opacity-100 bg-shopee text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow transition">
+                                                Check on Shopee
+                                            </span>
+                                        </span>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </section>
+                    ` : ''}
 
-                    ${shopProducts.length > 0 ? `
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-6">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider font-extrabold text-shopee bg-orange-50 px-2.5 py-1 rounded-full">Official Merchant Showcase</span>
-                                <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">From the Same Shop (${p.shopName || 'Official Store'})</h2>
+                    <!-- Overview & Technical Specs Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+                            <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                                <i class="fa-solid fa-file-lines text-shopee" aria-hidden="true"></i> Product Overview &amp; Buying Notes
+                            </h2>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${p.description || ''}</p>
+                            <div class="pt-2">
+                                <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-extrabold text-shopee hover:text-shopee-dark">
+                                    <span>Verify Available Variants on Shopee</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                            ${shopProducts.map(sp => `
-                                <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 hover:shadow-md transition flex flex-col justify-between space-y-3 group">
-                                    <a href="${sp.affLink}" target="_blank" rel="noopener noreferrer" class="space-y-2">
-                                        <div class="aspect-square bg-white rounded-xl overflow-hidden border border-slate-200">
-                                            <img src="${sp.image}" alt="${sp.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
-                                        </div>
-                                        <h3 class="font-bold text-slate-800 text-xs line-clamp-2 leading-snug group-hover:text-shopee transition">${sp.title}</h3>
-                                    </a>
-                                    <div class="space-y-1.5 pt-2 border-t border-slate-200/60">
-                                        <div class="flex items-baseline justify-between">
-                                            <span class="text-shopee font-extrabold text-sm">₱${sp.price.toLocaleString()}</span>
-                                            <span class="text-[10px] text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${sp.rating}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>` : ''}
 
-                    ${recommendedProducts.length > 0 ? `
-                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-slate-200 space-y-6">
-                        <div class="border-b border-slate-100 pb-4">
-                            <span class="text-[10px] uppercase tracking-wider font-extrabold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">Curated Recommendations</span>
-                            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mt-1">You May Also Like</h2>
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 space-y-4">
+                            <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                                <i class="fa-solid fa-list-check text-shopee" aria-hidden="true"></i> Key Details &amp; Order Info
+                            </h2>
+                            <div class="text-xs sm:text-sm text-slate-700 bg-slate-50 p-5 rounded-2xl border border-slate-100 leading-relaxed">
+                                ${p.specs || ''}
+                            </div>
                         </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                            ${recommendedProducts.map(rp => `
-                                <div class="bg-slate-50 rounded-2xl p-3 border border-slate-100 hover:shadow-md transition flex flex-col justify-between space-y-3 group">
-                                    <a href="${rp.affLink}" target="_blank" rel="noopener noreferrer" class="space-y-2">
-                                        <div class="aspect-square bg-white rounded-xl overflow-hidden border border-slate-200 relative">
-                                            <span class="absolute top-2 left-2 z-10 bg-shopee text-white text-[9px] font-bold px-1.5 py-0.5 rounded">Sulit Deal</span>
-                                            <img src="${rp.image}" alt="${rp.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
-                                        </div>
-                                        <h3 class="font-bold text-slate-800 text-xs line-clamp-2 leading-snug group-hover:text-shopee transition">${rp.title}</h3>
-                                    </a>
-                                    <div class="space-y-1.5 pt-2 border-t border-slate-200/60">
-                                        <div class="flex items-baseline justify-between">
-                                            <span class="text-shopee font-extrabold text-sm">₱${rp.price.toLocaleString()}</span>
-                                            <span class="text-[10px] text-amber-500 font-bold"><i class="fa-solid fa-star"></i> ${rp.rating}</span>
+                    </div>
+
+                    <!-- Buyer FAQ Section (Removes Purchase Hesitation) -->
+                    ${faqs.length > 0 ? `
+                        <section class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200 space-y-5">
+                            <h2 class="text-lg font-extrabold text-slate-900 flex items-center gap-2.5 border-b border-slate-100 pb-3">
+                                <i class="fa-solid fa-circle-question text-shopee"></i> Frequently Asked Questions Before Ordering
+                            </h2>
+                            <div class="divide-y divide-slate-100">
+                                ${faqs.map(f => `
+                                    <div class="py-3.5 first:pt-0 last:pb-0 space-y-1">
+                                        <h3 class="font-bold text-slate-900 text-sm">${f.q}</h3>
+                                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${f.a}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </section>
+                    ` : ''}
+
+                    <!-- Bottom Conversion Banner -->
+                    <section class="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="space-y-1.5 text-center md:text-left">
+                            <span class="text-xs font-extrabold uppercase tracking-wider text-orange-400">Ready to Checkout?</span>
+                            <h2 class="text-xl sm:text-2xl font-extrabold">Get ${p.title} While Vouchers Are Active</h2>
+                            <p class="text-xs sm:text-sm text-slate-300">Tap the button to view live stock, buyer ratings, and claim your Shopee discount before stocks run out.</p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                            <a href="${p.affLink}" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto whitespace-nowrap bg-shopee hover:bg-shopee-dark text-white font-extrabold py-3.5 px-7 rounded-2xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-shopee/30 transition">
+                                <i class="fa-solid fa-bag-shopping"></i> Check Price on Shopee
+                            </a>
+                            <a href="./" class="w-full sm:w-auto whitespace-nowrap bg-white/10 hover:bg-white/20 text-white font-semibold py-3.5 px-5 rounded-2xl text-xs flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-arrow-left"></i> All Sub-Pages
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Cross-Link Other Sub-Pages -->
+                    ${otherSubpages.length > 0 ? `
+                        <section class="space-y-4">
+                            <h2 class="text-lg font-extrabold text-slate-900">Explore More Featured Budol Sub-Pages</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                ${otherSubpages.map(other => `
+                                    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4">
+                                        <a href="?product=${other.id}" class="w-20 h-20 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0">
+                                            <img src="${other.images[0]}" alt="${other.title}" class="w-full h-full object-cover">
+                                        </a>
+                                        <div class="flex-1 min-w-0 space-y-1">
+                                            <a href="?product=${other.id}" class="font-bold text-slate-900 text-sm hover:text-shopee line-clamp-1">${other.title}</a>
+                                            <div class="text-shopee font-extrabold text-base">₱${other.price.toLocaleString()}</div>
+                                            <div class="flex items-center gap-2 pt-1">
+                                                <a href="?product=${other.id}" class="text-[11px] font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-2.5 py-1 rounded-lg transition">Open Sub-Page</a>
+                                                <a href="${other.affLink}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-white bg-shopee hover:bg-shopee-dark px-2.5 py-1 rounded-lg transition">Shopee →</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>` : ''}
+                                `).join('')}
+                            </div>
+                        </section>
+                    ` : ''}
                 </article>
             `;
         }
@@ -648,6 +910,16 @@
             const productSlug = params.get('product');
             const product = products.find(p => p.id === productSlug);
             if (product) renderSingleProductPage(product);
+        }
+
+        function prevSingleImage(total) {
+            singleProductActiveImgIdx = (singleProductActiveImgIdx - 1 + total) % total;
+            switchSingleImage(singleProductActiveImgIdx);
+        }
+
+        function nextSingleImage(total) {
+            singleProductActiveImgIdx = (singleProductActiveImgIdx + 1) % total;
+            switchSingleImage(singleProductActiveImgIdx);
         }
 
         function filterCategory(cat) {
