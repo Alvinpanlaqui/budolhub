@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://budolhub.shop/sitemap.xml
