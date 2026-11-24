@@ -111,18 +111,9 @@
                 </div>
             </a>
 
-            <!-- Quick Sub-page Switcher (Desktop - dynamically shows current/top sub-pages) -->
+            <!-- Quick Sub-page Switcher (Desktop) -->
             <nav id="desktopSubpageNav" class="hidden lg:flex items-center gap-2 text-xs font-semibold">
                 <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
-                <a href="?product=hikari-ultrafresh-whitening-sunscreen-spf50-buy-1-take-3" class="px-3 py-1.5 rounded-full bg-orange-50 text-shopee border border-orange-200 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
-                    Hikari Sunscreen SPF50+
-                </a>
-                <a href="?product=smelle-linen-spray-disinfectant-room-odor-neutralizer" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
-                    Smelle Linen Spray
-                </a>
-                <a href="?product=orashare-pcm20-mini-powerbank-20000mah-dual-cable" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
-                    Orashare 20000mAh
-                </a>
             </nav>
 
             <!-- Search Bar (Desktop) -->
@@ -1726,15 +1717,10 @@
                 }
             });
 
-            // Update top subpage switcher to highlight current product
+            // Keep top subpage switcher clean (only All Finds)
             const navEl = document.getElementById('desktopSubpageNav');
             if (navEl) {
-                const others = products.filter(item => item.id !== p.id).slice(0, 2);
-                navEl.innerHTML = `
-                    <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
-                    <a href="?product=${p.id}" class="px-3 py-1.5 rounded-full bg-shopee text-white shadow-sm transition max-w-[210px] truncate" title="${p.title}">${p.title}</a>
-                    ${others.map(o => `<a href="?product=${o.id}" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[160px] truncate" title="${o.title}">${o.title}</a>`).join('')}
-                `;
+                navEl.innerHTML = `<a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>`;
             }
         }
 
