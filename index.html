@@ -111,17 +111,17 @@
                 </div>
             </a>
 
-            <!-- Quick Sub-page Switcher (Desktop) -->
-            <nav class="hidden lg:flex items-center gap-2 text-xs font-semibold">
+            <!-- Quick Sub-page Switcher (Desktop - dynamically shows current/top sub-pages) -->
+            <nav id="desktopSubpageNav" class="hidden lg:flex items-center gap-2 text-xs font-semibold">
                 <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
-                <a href="?product=gt378-10l-air-fryer-3xl" class="px-3 py-1.5 rounded-full bg-orange-50 text-shopee border border-orange-200 hover:bg-shopee hover:text-white transition">
-                    GT378 10L Air Fryer
+                <a href="?product=hikari-ultrafresh-whitening-sunscreen-spf50-buy-1-take-3" class="px-3 py-1.5 rounded-full bg-orange-50 text-shopee border border-orange-200 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
+                    Hikari Sunscreen SPF50+
                 </a>
-                <a href="?product=independent-brand-and-design" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition">
-                    Independent Brand &amp; Design
+                <a href="?product=smelle-linen-spray-disinfectant-room-odor-neutralizer" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
+                    Smelle Linen Spray
                 </a>
-                <a href="?product=heavy-duty-solar-street-lamp" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition">
-                    Solar Street Lamp
+                <a href="?product=orashare-pcm20-mini-powerbank-20000mah-dual-cable" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[180px] truncate">
+                    Orashare 20000mAh
                 </a>
             </nav>
 
@@ -1651,8 +1651,95 @@
             }).join('');
         }
 
+        function updateSeoForProduct(p) {
+            const cleanTitle = `${p.title}`;
+            const metaDesc = `${p.title} — ₱${Number(p.price).toLocaleString()} on Shopee PH. ${p.tagline || p.description || ''}`.slice(0, 158);
+            document.title = cleanTitle;
+            const titleEl = document.getElementById('pageTitle');
+            if (titleEl) titleEl.textContent = cleanTitle;
+
+            const setMeta = (selector, attr, val) => {
+                let tag = document.querySelector(selector);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    if (selector.includes('property=')) {
+                        tag.setAttribute('property', selector.match(/property="([^"]+)"/)[1]);
+                    } else if (selector.includes('name=')) {
+                        tag.setAttribute('name', selector.match(/name="([^"]+)"/)[1]);
+                    }
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute(attr, val);
+            };
+
+            setMeta('meta[name="title"]', 'content', cleanTitle);
+            setMeta('meta[name="description"]', 'content', metaDesc);
+            setMeta('meta[property="og:type"]', 'content', 'product');
+            setMeta('meta[property="og:title"]', 'content', cleanTitle);
+            setMeta('meta[property="og:description"]', 'content', metaDesc);
+            if (p.images && p.images[0]) {
+                setMeta('meta[property="og:image"]', 'content', p.images[0]);
+                setMeta('meta[property="twitter:image"]', 'content', p.images[0]);
+            }
+            setMeta('meta[property="twitter:title"]', 'content', cleanTitle);
+            setMeta('meta[property="twitter:description"]', 'content', metaDesc);
+
+            // Update canonical link
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            const canonicalUrl = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(p.id)}`;
+            canonical.setAttribute('href', canonicalUrl);
+
+            // Inject/update Product JSON-LD schema so Google & crawlers see the product title, price & rating
+            let schemaScript = document.getElementById('productJsonLd');
+            if (!schemaScript) {
+                schemaScript = document.createElement('script');
+                schemaScript.id = 'productJsonLd';
+                schemaScript.type = 'application/ld+json';
+                document.head.appendChild(schemaScript);
+            }
+            schemaScript.textContent = JSON.stringify({
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": p.title,
+                "image": p.images || [],
+                "description": p.description || p.tagline || p.title,
+                "brand": {
+                    "@type": "Brand",
+                    "name": p.shopName || p.category || "Shopee Verified"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "url": canonicalUrl,
+                    "priceCurrency": "PHP",
+                    "price": Number(p.price) || 0,
+                    "availability": "https://schema.org/InStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": Number(p.rating) || 4.9,
+                    "reviewCount": Number(p.reviewCount) || 100
+                }
+            });
+
+            // Update top subpage switcher to highlight current product
+            const navEl = document.getElementById('desktopSubpageNav');
+            if (navEl) {
+                const others = products.filter(item => item.id !== p.id).slice(0, 2);
+                navEl.innerHTML = `
+                    <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
+                    <a href="?product=${p.id}" class="px-3 py-1.5 rounded-full bg-shopee text-white shadow-sm transition max-w-[210px] truncate" title="${p.title}">${p.title}</a>
+                    ${others.map(o => `<a href="?product=${o.id}" class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-shopee hover:text-white transition max-w-[160px] truncate" title="${o.title}">${o.title}</a>`).join('')}
+                `;
+            }
+        }
+
         function renderSingleProductPage(p) {
-            document.getElementById('pageTitle').textContent = `${p.title} — Official Shopee Deal & Verified Reviews | Budol Finds Hub`;
+            updateSeoForProduct(p);
             const searchContainer = document.getElementById('searchContainer');
             const mobileSearchContainer = document.getElementById('mobileSearchContainer');
             if (searchContainer) searchContainer.style.display = 'none';
