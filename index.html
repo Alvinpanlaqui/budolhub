@@ -111,13 +111,8 @@
                 </div>
             </a>
 
-            <!-- Quick Sub-page Switcher (Desktop) -->
-            <nav id="desktopSubpageNav" class="hidden lg:flex items-center gap-2 text-xs font-semibold">
-                <a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>
-            </nav>
-
             <!-- Search Bar (Desktop) -->
-            <div id="searchContainer" class="hidden md:flex flex-1 max-w-xs relative">
+            <div id="searchContainer" class="hidden md:flex flex-1 max-w-md relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                     <i class="fa-solid fa-search" aria-hidden="true"></i>
                 </span>
@@ -1717,11 +1712,6 @@
                 }
             });
 
-            // Keep top subpage switcher clean (only All Finds)
-            const navEl = document.getElementById('desktopSubpageNav');
-            if (navEl) {
-                navEl.innerHTML = `<a href="./" class="px-3 py-1.5 rounded-full text-slate-600 hover:bg-slate-100 transition">All Finds</a>`;
-            }
         }
 
         function renderSingleProductPage(p) {
