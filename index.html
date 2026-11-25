@@ -2585,7 +2585,7 @@
         let products = [];
         let currentCategory = 'All';
         let searchQuery = '';
-        let currentSort = 'featured';
+        let currentSort = 'newest';
         let activeImageIndices = {};
         let singleProductActiveImgIdx = 0;
         let singleProductShowVideo = false;
@@ -2597,7 +2597,7 @@
         });
 
         function loadProducts() {
-            const saved = localStorage.getItem('shopee_hub_products_v4_4');
+            const saved = localStorage.getItem('shopee_hub_products_v4_5');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
@@ -2619,7 +2619,23 @@
             } else {
                 products = [...defaultProducts];
             }
-            localStorage.setItem('shopee_hub_products_v4_4', JSON.stringify(products));
+            localStorage.setItem('shopee_hub_products_v4_5', JSON.stringify(products));
+        }
+
+        function getNewestTimestamp(product, fallbackIndex = 0) {
+            const timestamps = [];
+            if (Array.isArray(product.verifiedReviews)) {
+                product.verifiedReviews.forEach(rev => {
+                    if (rev && rev.date) {
+                        const parsed = Date.parse(rev.date);
+                        if (!Number.isNaN(parsed)) timestamps.push(parsed);
+                    }
+                });
+            }
+            if (timestamps.length > 0) {
+                return Math.max(...timestamps);
+            }
+            return fallbackIndex;
         }
 
         function setupEventListeners() {
@@ -2696,7 +2712,12 @@
             if (mobileSearchContainer) mobileSearchContainer.style.display = 'block';
             if (mobileStickyCta) mobileStickyCta.classList.add('hidden');
 
-            const featured = products[0] || null;
+            const featured = [...products].sort((a, b) => {
+                const idxA = products.indexOf(a);
+                const idxB = products.indexOf(b);
+                const timeDiff = getNewestTimestamp(b, idxB) - getNewestTimestamp(a, idxA);
+                return timeDiff !== 0 ? timeDiff : idxB - idxA;
+            })[0] || null;
             const featuredImage = featured && featured.images && featured.images[0]
                 ? featured.images[0]
                 : 'https://placehold.co/600x400/fff0ed/ee4d2d?text=No+Products+Available';
@@ -2763,6 +2784,7 @@
                         <div class="flex items-center gap-2">
                             <label for="sortSelect" class="text-xs font-medium text-slate-500">Sort by:</label>
                             <select id="sortSelect" onchange="changeSort(this.value)" class="bg-white border border-slate-300 text-slate-700 text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-shopee">
+                                <option value="newest" ${currentSort==='newest'?'selected':''}>Newest First (Latest to Oldest)</option>
                                 <option value="featured" ${currentSort==='featured'?'selected':''}>Featured / Default</option>
                                 <option value="price-low" ${currentSort==='price-low'?'selected':''}>Price: Low to High</option>
                                 <option value="price-high" ${currentSort==='price-high'?'selected':''}>Price: High to Low</option>
@@ -2813,7 +2835,12 @@
                 return matchesCat && matchesSearch;
             });
 
-            if (currentSort === 'price-low') {
+            if (currentSort === 'newest') {
+                filtered.sort((a, b) => {
+                    const timeDiff = getNewestTimestamp(b, b.origIndex) - getNewestTimestamp(a, a.origIndex);
+                    return timeDiff !== 0 ? timeDiff : b.origIndex - a.origIndex;
+                });
+            } else if (currentSort === 'price-low') {
                 filtered.sort((a, b) => a.price - b.price);
             } else if (currentSort === 'price-high') {
                 filtered.sort((a, b) => b.price - a.price);
@@ -3396,6 +3423,9 @@
 
         function filterCategory(cat) {
             currentCategory = cat;
+            if (cat === 'All') {
+                currentSort = 'newest';
+            }
             renderCatalogView();
         }
 
@@ -3406,6 +3436,7 @@
 
         function resetFilters() {
             currentCategory = 'All';
+            currentSort = 'newest';
             searchQuery = '';
             renderCatalogView();
         }
